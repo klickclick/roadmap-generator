@@ -1,10 +1,14 @@
 const { documentToHtmlString } = require('@contentful/rich-text-html-renderer');
 
 module.exports = function(eleventyConfig) {
-
-    // Dieser Filter ist nötig, damit formatierter Text aus Contentful korrekt als HTML angezeigt wird.
+    
+    // DIESER TEIL IST ENTSCHEIDEND
+    // Er definiert, was der richText-Filter tun soll.
     eleventyConfig.addFilter("richText", (value) => {
-        return documentToHtmlString(value);
+        if (value) {
+            return documentToHtmlString(value);
+        }
+        return "";
     });
 
     // Dieser Filter formatiert das Datum schöner.
@@ -17,9 +21,12 @@ module.exports = function(eleventyConfig) {
        });
     });
 
-    // Dieser Filter macht aus Namen URL-freundliche Strings (z.B. "Jacob Jahns" -> "jacob-jahns").
+    // Dieser Filter macht aus Namen URL-freundliche Strings.
     eleventyConfig.addFilter("slug", (str) => {
-        return str.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+        if (str) {
+            return str.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+        }
+        return "";
     });
 
     return {
