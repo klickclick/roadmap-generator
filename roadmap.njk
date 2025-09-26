@@ -116,7 +116,8 @@ permalink: "roadmaps/{{ roadmap.athletenName | slug }}/index.html"
                             <p class="text-sm text-gray-600 mt-1 mb-3">Die größte und bekannteste Organisation mit über 1.100 Unis. Bietet das höchste sportliche Niveau in drei Divisionen (D1, D2, D3).</p>
                             <div class="pt-3 border-t border-gray-200">
                                 <h5 class="font-semibold text-gray-700 text-sm">Deine realistische Chance:</h5>
-                                <div class="assessment-placeholder mt-1">{{ roadmap.einschaetzungNCAA | richText }}</div>                            </div>
+                                <div class="assessment-placeholder mt-1">{{ roadmap.einschaetzungNCAA | richText }}</div>
+                                <pre><code>{{ roadmap.einschaetzungNCAA | dump | safe }}</code></pre>                           </div>
                         </div>
                         <div class="org-card">
                             <h4 class="font-bold text-lg text-[#003f5c]">NAIA (National Association of Intercollegiate Athletics)</h4>
