@@ -173,6 +173,7 @@ permalink: "roadmaps/{{ roadmap.athletenName | slug }}/index.html"
                 </div>
                 <div class="border border-gray-200 rounded-lg p-4 text-center">
                     <img src="{{ roadmap.erfolgsgeschichte2_Bild.fields.file.url }}" alt="Profil-Screenshot" class="w-full h-48 object-cover rounded-md mb-4">
+                    <pre><code>{{ roadmap.erfolgsgeschichte1_Bild | dump | safe }}</code></pre>
                     <h4 class="text-xl font-bold">{{ roadmap.erfolgsgeschichte2_Name }}</h4>
                     <p class="text-gray-600">{{ roadmap.erfolgsgeschichte2_Beschreibung }}</p>
                     <a href="{{ roadmap.erfolgsgeschichte2_Link }}" target="_blank" class="mt-4 inline-block bg-[#58508d] text-white font-bold py-2 px-4 rounded-lg hover:bg-[#4a4379] transition-colors">
