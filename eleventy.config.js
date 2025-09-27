@@ -21,14 +21,6 @@ module.exports = function(eleventyConfig) {
        });
     });
 
-    // Dieser Filter macht aus Namen URL-freundliche Strings.
-    eleventyConfig.addFilter("slug", (str) => {
-        if (str) {
-            return str.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
-        }
-        return "";
-    });
-
     return {
         dir: {
             input: ".",
