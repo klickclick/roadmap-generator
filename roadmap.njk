@@ -76,7 +76,7 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
         <header class="flex justify-between items-center mb-12">
             <div class="text-left">
                 <h1 class="text-4xl md:text-5xl font-black text-[#003f5c] mb-2">Deine Persönliche Roadmap zum US-Stipendium</h1>
-                <p class="text-lg text-gray-600"> <span class="font-bold">{{ roadmap.athletenName }}</span> | Datum: <span class="font-bold">{{ roadmap.erstellungsDatum | readableDate }}</span></p>            </div>
+                <p class="text-lg text-gray-600"> <span class="font-bold">{{ roadmap.fields.athletenName }}</span> | Datum: <span class="font-bold">{{ roadmap.fields.erstellungsDatum | readableDate }}</span></p>            </div>
             <div>
                 <img src="https://athletesusa.org/wp-content/uploads/2021/11/Athletes-USA.png" alt="Firmenlogo" class="w-48">
             </div>
@@ -88,17 +88,17 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                 <div class="card">
                     <p class="text-6xl mb-4">🏆</p>
                     <h3 class="text-xl font-bold mb-2 text-[#58508d]">SPORTLICHES POTENZIAL</h3>
-                    <p class="text-gray-600">Realistische Optionen für dich sind: <br><span class="font-bold text-lg text-[#003f5c]">{{ roadmap.potenzialOptionen }}</span></p>
+                    <p class="text-gray-600">Realistische Optionen für dich sind: <br><span class="font-bold text-lg text-[#003f5c]">{{ roadmap.fields.potenzialOptionen }}</span></p>
                 </div>
                 <div class="card">
                     <p class="text-6xl mb-4">🎓</p>
                     <h3 class="text-xl font-bold mb-2 text-[#bc5090]">AKADEMISCHE CHANCE</h3>
-                    <p class="text-gray-600">Deine akademischen Leistungen eröffnen dir den Weg zu einem <span class="font-bold">{{ roadmap.abschlussTyp }}</span>-Studium.</p>
+                    <p class="text-gray-600">Deine akademischen Leistungen eröffnen dir den Weg zu einem <span class="font-bold">{{ roadmap.fields.abschlussTyp }}</span>-Studium.</p>
                 </div>
                 <div class="card">
                     <p class="text-6xl mb-4">🗓️</p>
                     <h3 class="text-xl font-bold mb-2 text-[#ff6361]">DEIN TIMING</h3>
-                    <p class="text-gray-600">Dein Zeitfenster für <span class="font-bold">{{ roadmap.startSemester }}</span> ist offen und als <span class="font-bold text-green-600">{{ roadmap.timingBewertung }}</span> einzustufen.</p>
+                    <p class="text-gray-600">Dein Zeitfenster für <span class="font-bold">{{ roadmap.fields.startSemester }}</span> ist offen und als <span class="font-bold text-green-600">{{ roadmap.fields.timingBewertung }}</span> einzustufen.</p>
                 </div>
             </div>
         </section>
@@ -116,7 +116,7 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                             <p class="text-sm text-gray-600 mt-1 mb-3">Die größte und bekannteste Organisation mit über 1.100 Unis. Bietet das höchste sportliche Niveau in drei Divisionen (D1, D2, D3).</p>
                             <div class="pt-3 border-t border-gray-200">
                                 <h5 class="font-semibold text-gray-700 text-sm">Deine realistische Chance:</h5>
-                                <div class="assessment-placeholder mt-1">{{ roadmap.einschaetzungNcaa | richText | safe }}</div>
+                                <div class="assessment-placeholder mt-1">{{ roadmap.fields.einschaetzungNcaa | richText | safe }}</div>
                            </div>
                         </div>
                         <div class="org-card">
@@ -124,14 +124,14 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                             <p class="text-sm text-gray-600 mt-1 mb-3">Über 250 Mitgliedsschulen, die oft eine bessere Balance zwischen Sport und Akademie bieten. Ideal für Athleten, die eine persönlichere Uni-Erfahrung suchen.</p>
                              <div class="pt-3 border-t border-gray-200">
                                 <h5 class="font-semibold text-gray-700 text-sm">Deine realistische Chance:</h5>
-                                <div class="assessment-placeholder mt-1">{{ roadmap.einschaetzungNaia | richText | safe }}</div>                            </div>
+                                <div class="assessment-placeholder mt-1">{{ roadmap.fields.einschaetzungNaia | richText | safe }}</div>                            </div>
                         </div>
                         <div class="org-card">
                             <h4 class="font-bold text-lg text-[#003f5c]">NJCAA (National Junior College Athletic Association)</h4>
                             <p class="text-sm text-gray-600 mt-1 mb-3">Der Verband der Junior & Community Colleges (über 500). Ein exzellenter Startpunkt für 2 Jahre, um sich sportlich und akademisch für eine 4-Jahres-Uni zu empfehlen.</p>
                              <div class="pt-3 border-t border-gray-200">
                                 <h5 class="font-semibold text-gray-700 text-sm">Deine realistische Chance:</h5>
-                                <div class="assessment-placeholder mt-1">{{ roadmap.einschaetzungNjcaa | richText | safe }}</div>                            </div>
+                                <div class="assessment-placeholder mt-1">{{ roadmap.fields.einschaetzungNjcaa | richText | safe }}</div>                            </div>
                         </div>
                     </div>
 
@@ -148,7 +148,7 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                      <p class="text-gray-600 mb-4">Dein Abschluss ist der Schlüssel zur akademischen Zulassung. Die folgenden Tests sind dafür in der Regel erforderlich.</p>
                     <div class="bg-gray-50 rounded-lg p-6">
                          <h4 class="font-bold text-lg mb-2">Hochschul-Qualifikation</h4>
-                         <p class="text-gray-700 mb-6">Dein Abschluss (Abitur) qualifiziert dich für ein: <span class="font-bold text-xl text-[#bc5090]">{{ roadmap.abschlussTyp }}</span></p>
+                         <p class="text-gray-700 mb-6">Dein Abschluss (Abitur) qualifiziert dich für ein: <span class="font-bold text-xl text-[#bc5090]">{{ roadmap.fields.abschlussTyp }}</span></p>
                         <h4 class="font-bold text-lg mb-2">Erforderliche Zulassungstests</h4>
                         <ul class="space-y-2 text-gray-700">
                             <li class="flex items-center"><span class="text-2xl mr-3">☐</span> eventuell SAT (Scholastic Aptitude Test)</li>
@@ -165,17 +165,17 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="border border-gray-200 rounded-lg p-4 text-center">
                     <img src="{{ roadmap.erfolgsgeschichte1Bild.fields.file.url }}" alt="Profil-Screenshot" class="w-full h-48 object-cover rounded-md mb-4">
-                    <h4 class="text-xl font-bold">{{ roadmap.erfolgsgeschichte1_Name }}</h4>
-                    <p class="text-gray-600">{{ roadmap.erfolgsgeschichte1_Beschreibung }}</p>
-                    <a href="{{ roadmap.erfolgsgeschichte1_Link }}" target="_blank" class="mt-4 inline-block bg-[#58508d] text-white font-bold py-2 px-4 rounded-lg hover:bg-[#4a4379] transition-colors">
+                    <h4 class="text-xl font-bold">{{ roadmap.fields.erfolgsgeschichte1_Name }}</h4>
+                    <p class="text-gray-600">{{ roadmap.fields.erfolgsgeschichte1_Beschreibung }}</p>
+                    <a href="{{ roadmap.fields.erfolgsgeschichte1_Link }}" target="_blank" class="mt-4 inline-block bg-[#58508d] text-white font-bold py-2 px-4 rounded-lg hover:bg-[#4a4379] transition-colors">
                         Zum Online-Profil →
                     </a>
                 </div>
                 <div class="border border-gray-200 rounded-lg p-4 text-center">
-                    <img src="{{ roadmap.erfolgsgeschichte2Bild.fields.file.url }}" alt="Profil-Screenshot" class="w-full h-48 object-cover rounded-md mb-4">
-                    <h4 class="text-xl font-bold">{{ roadmap.erfolgsgeschichte2_Name }}</h4>
+                    <img src="{{ roadmap.fields.erfolgsgeschichte2Bild.fields.file.url }}" alt="Profil-Screenshot" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h4 class="text-xl font-bold">{{ roadmap.fields.erfolgsgeschichte2_Name }}</h4>
                     <p class="text-gray-600">{{ roadmap.erfolgsgeschichte2_Beschreibung }}</p>
-                    <a href="{{ roadmap.erfolgsgeschichte2_Link }}" target="_blank" class="mt-4 inline-block bg-[#58508d] text-white font-bold py-2 px-4 rounded-lg hover:bg-[#4a4379] transition-colors">
+                    <a href="{{ roadmap.fields.erfolgsgeschichte2_Link }}" target="_blank" class="mt-4 inline-block bg-[#58508d] text-white font-bold py-2 px-4 rounded-lg hover:bg-[#4a4379] transition-colors">
                         Zum Online-Profil →
                     </a>
                 </div>
@@ -196,8 +196,8 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                         <div class="text-2xl font-bold text-[#ff6361] my-3">- DEIN POTENZIELLES STIPENDIUM</div>
                         <div class="bg-white p-4 rounded-lg shadow-inner mt-2">
                             <p class="text-sm text-gray-600">DEIN VORAUSSICHTLICHER EIGENANTEIL</p>
-                            <p class="text-4xl font-black text-[#003f5c]">{{ roadmap.finanzenEigenanteilMonatlich }}</p>
-                            <p class="text-lg text-gray-700 font-semibold">{{ roadmap.finanzenEigenanteilJaehrlich }}</p>
+                            <p class="text-4xl font-black text-[#003f5c]">{{ roadmap.fields.finanzenEigenanteilMonatlich }}</p>
+                            <p class="text-lg text-gray-700 font-semibold">{{ roadmap.fields.finanzenEigenanteilJaehrlich }}</p>
                         </div>
                     </div>
                 </div>
@@ -269,11 +269,11 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                 <div>
                     <h3 class="text-2xl font-bold text-[#003f5c]">Dein Persönlicher Ansprechpartner</h3>
                     <p class="text-gray-600 mt-2 mb-4">Ich bin bei allen Fragen für dich da und begleite dich auf deinem Weg.</p>
-                    <p class="font-bold text-lg">{{ roadmap.beraterName }}</p>
+                    <p class="font-bold text-lg">{{ roadmap.fields.beraterName }}</p>
                     <p class="text-gray-500">University Search Team Athletes-USA</p>
                     <p class="mt-2">
-                        <a href="mailto:{{ roadmap.beraterEmail }}" class="text-[#58508d] hover:underline">{{ roadmap.beraterEmail }}</a> | 
-                        <a href="tel:{{ roadmap.beraterTelefon }}" class="text-[#58508d] hover:underline">{{ roadmap.beraterTelefon }}</a>
+                        <a href="mailto:{{ roadmap.fields.beraterEmail }}" class="text-[#58508d] hover:underline">{{ roadmap.fields.beraterEmail }}</a> | 
+                        <a href="tel:{{ roadmap.fields.beraterTelefon }}" class="text-[#58508d] hover:underline">{{ roadmap.fields.beraterTelefon }}</a>
                     </p>
                 </div>
             </div>

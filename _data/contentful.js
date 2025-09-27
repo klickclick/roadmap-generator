@@ -16,7 +16,7 @@ module.exports = async function() {
     });
     console.log(`Successfully fetched ${entries.items.length} roadmaps.`);
     return {
-      roadmap: entries.items.map(item => item.fields)
+  roadmap: entries.items
     };
   } catch (error) {
     console.error("Error fetching data from Contentful:", error);
