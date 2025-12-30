@@ -7,6 +7,7 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
 ---
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,10 +20,14 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f4f1ea;
+            /* Sand color base */
+            /* Subtle texture using an inline SVG */
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.07'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
+
         .card {
             background-color: #002D56;
+            /* Athletes USA Blue */
             color: white;
             border-radius: 0.75rem;
             padding: 2rem;
@@ -30,17 +35,22 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         }
+
         .section-title {
             font-size: 2.25rem;
+            /* 36px */
             font-weight: 900;
-            color: #002D56;
+            /* Farbe HIER ENTFERNT, damit text-white funktioniert! */
             text-align: center;
             margin-bottom: 2.5rem;
         }
+
+        /* Custom styles for the improved timeline */
         .timeline-item::before {
             content: '';
             position: absolute;
@@ -50,8 +60,11 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
             height: 16px;
             border-radius: 50%;
             background-color: #002D56;
+            /* Blue background to pop */
             border: 4px solid #ffffff;
+            /* White border */
         }
+
         .timeline-path {
             position: absolute;
             left: -23px;
@@ -59,51 +72,100 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
             bottom: -12px;
             width: 2px;
             background-color: #ffffff;
+            /* White line */
         }
+
         .timeline-item:last-child .timeline-path {
-           display: none;
+            display: none;
         }
-        @media print { /* Druckeinstellungen bleiben erhalten */ }
+
+        /* Styles for Details/Summary Accordion */
+        details>summary {
+            list-style: none;
+        }
+
+        details>summary::-webkit-details-marker {
+            display: none;
+        }
+
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background-color: white;
+                background-image: none;
+            }
+
+            .card {
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #e2e8f0;
+                background-color: #002D56 !important;
+                color: white !important;
+            }
+
+            .section-title,
+            h1,
+            h3,
+            a {
+                color: #002D56 !important;
+            }
+
+            section {
+                page-break-before: auto;
+            }
+        }
     </style>
 </head>
+
 <body class="text-gray-700">
 
     <div class="container mx-auto p-4 md:p-8 max-w-6xl">
 
         <header class="flex justify-between items-start md:items-center mb-16">
             <div class="text-left">
-                <h1 class="text-4xl md:text-5xl font-black text-[#002D56] mb-2">Deine Persönliche Roadmap zum US-Stipendium</h1>
-                <p class="text-lg text-gray-500">Für <span class="font-bold text-gray-800">{{ roadmap.fields.athletenName }}</span> | Erstellt: <span class="font-bold text-gray-800">{{ roadmap.fields.erstellungsDatum | readableDate }}</span></p>
+                <h1 class="text-4xl md:text-5xl font-black text-[#002D56] mb-2">Deine Persönliche Roadmap zum
+                    US-Stipendium</h1>
+                <p class="text-lg text-gray-500">Für <span class="font-bold text-gray-800">{{
+                        roadmap.fields.athletenName }}</span> | Erstellt: <span class="font-bold text-gray-800">{{
+                        roadmap.fields.erstellungsDatum | readableDate }}</span></p>
             </div>
             <div class="flex-shrink-0">
-                <img src="https://athletesusa.org/wp-content/uploads/2021/11/Athletes-USA.png" alt="Firmenlogo" class="w-40 md:w-48">
+                <img src="https://athletesusa.org/wp-content/uploads/2021/11/Athletes-USA.png" alt="Firmenlogo"
+                    class="w-40 md:w-48">
             </div>
         </header>
 
         <!-- Section 1: Potential -->
         <section id="overview" class="mb-16">
-            <h2 class="section-title">Dein Potenzial auf einen Blick</h2>
+            <!-- HIER WICHTIG: text-[#002D56] explizit hinzugefügt -->
+            <h2 class="section-title text-[#002D56]">Dein Potenzial auf einen Blick</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                 <div class="card">
                     <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-white/20 mb-4">
                         <span class="text-3xl">🏆</span>
                     </div>
                     <h3 class="text-xl font-bold mb-2">SPORTLICHES POTENZIAL</h3>
-                    <p class="text-gray-300">Realistische Optionen für dich sind: <br><span class="font-bold text-lg text-white">{{ roadmap.fields.potenzialOptionen }}</span></p>
+                    <p class="text-gray-300">Realistische Optionen für dich sind: <br><span
+                            class="font-bold text-lg text-white">{{ roadmap.fields.potenzialOptionen }}</span></p>
                 </div>
                 <div class="card">
                     <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-white/20 mb-4">
                         <span class="text-3xl">🎓</span>
                     </div>
                     <h3 class="text-xl font-bold mb-2">AKADEMISCHE CHANCE</h3>
-                    <p class="text-gray-300">Dein Abschluss qualifiziert dich für ein <span class="font-bold text-lg text-white">{{ roadmap.fields.abschlussTyp }}</span>-Studium.</p>
+                    <p class="text-gray-300">Dein Abschluss qualifiziert dich für ein <span
+                            class="font-bold text-lg text-white">{{ roadmap.fields.abschlussTyp }}</span>-Studium.</p>
                 </div>
                 <div class="card">
                     <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-white/20 mb-4">
                         <span class="text-3xl">🗓️</span>
                     </div>
                     <h3 class="text-xl font-bold mb-2 text-red-400">DEIN TIMING</h3>
-                    <p class="text-gray-300">Dein Zeitfenster für <span class="font-bold">{{ roadmap.fields.startSemester }}</span> ist offen und als <span class="font-bold text-lg text-green-400">{{ roadmap.fields.timingBewertung }}</span> einzustufen.</p>
+                    <p class="text-gray-300">Dein Zeitfenster für <span class="font-bold">{{
+                            roadmap.fields.startSemester }}</span> ist offen und als <span
+                            class="font-bold text-lg text-green-400">{{ roadmap.fields.timingBewertung }}</span>
+                        einzustufen.</p>
                 </div>
             </div>
         </section>
@@ -115,51 +177,84 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                 <!-- Athletic Assessment -->
                 <div>
                     <h3 class="text-2xl font-bold mb-4">Sportliche Einschätzung</h3>
-                    <p class="text-gray-300 mb-6">Basierend auf deinem sportlichen Level haben wir eingeschätzt, wo deine besten Chancen für ein hohes Stipendium liegen.</p>
+                    <p class="text-gray-300 mb-6">Basierend auf deinem sportlichen Level haben wir eingeschätzt, wo
+                        deine besten Chancen für ein hohes Stipendium liegen.</p>
+
                     <div class="space-y-4">
                         <div class="border border-white/20 rounded-lg p-4 bg-[#00254a]">
                             <h4 class="font-bold text-lg">NCAA (National Collegiate Athletic Association)</h4>
-                            <p class="text-sm text-gray-300 mt-1 mb-3">Die größte und bekannteste Organisation mit dem höchsten sportlichen Niveau (D1, D2, D3).</p>
+                            <p class="text-sm text-gray-300 mt-1 mb-3">Die größte und bekannteste Organisation mit dem
+                                höchsten sportlichen Niveau (D1, D2, D3).</p>
                             <div class="pt-3 border-t border-white/20">
                                 <h5 class="font-semibold text-gray-200 text-sm mb-2">Deine realistische Chance:</h5>
-                                <div class="text-sky-200 text-sm font-semibold">{{ roadmap.fields.einschaetzungNcaa | richText | safe }}</div>
+                                <div class="text-sky-200 text-sm font-semibold">{{ roadmap.fields.einschaetzungNcaa |
+                                    richText | safe }}</div>
                             </div>
                         </div>
                         <div class="border border-white/20 rounded-lg p-4 bg-[#00254a]">
                             <h4 class="font-bold text-lg">NAIA (National Association of Intercollegiate Athletics)</h4>
-                            <p class="text-sm text-gray-300 mt-1 mb-3">Bietet eine bessere Balance zwischen Sport & Akademie und eine persönlichere Uni-Erfahrung.</p>
+                            <p class="text-sm text-gray-300 mt-1 mb-3">Bietet eine bessere Balance zwischen Sport &
+                                Akademie und eine persönlichere Uni-Erfahrung.</p>
                             <div class="pt-3 border-t border-white/20">
                                 <h5 class="font-semibold text-gray-200 text-sm mb-2">Deine realistische Chance:</h5>
-                                <div class="text-sky-200 text-sm font-semibold">{{ roadmap.fields.einschaetzungNaia | richText | safe }}</div>
+                                <div class="text-sky-200 text-sm font-semibold">{{ roadmap.fields.einschaetzungNaia |
+                                    richText | safe }}</div>
                             </div>
                         </div>
                         <div class="border border-white/20 rounded-lg p-4 bg-[#00254a]">
                             <h4 class="font-bold text-lg">NJCAA (National Junior College Athletic Association)</h4>
-                            <p class="text-sm text-gray-300 mt-1 mb-3">Exzellenter Startpunkt für 2 Jahre, um sich für eine Top 4-Jahres-Uni zu empfehlen.</p>
+                            <p class="text-sm text-gray-300 mt-1 mb-3">Exzellenter Startpunkt für 2 Jahre, um sich für
+                                eine Top 4-Jahres-Uni zu empfehlen.</p>
                             <div class="pt-3 border-t border-white/20">
                                 <h5 class="font-semibold text-gray-200 text-sm mb-2">Deine realistische Chance:</h5>
-                                <div class="text-sky-200 text-sm font-semibold">{{ roadmap.fields.einschaetzungNjcaa | richText | safe }}</div>
+                                <div class="text-sky-200 text-sm font-semibold">{{ roadmap.fields.einschaetzungNjcaa |
+                                    richText | safe }}</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- Academic Assessment -->
-                 <div>
+                <div>
                     <h3 class="text-2xl font-bold mb-4">Akademische Einschätzung</h3>
-                     <p class="text-gray-300 mb-6">Dein Schulabschluss ist der Schlüssel. Folgende Dokumente und Tests sind dafür erforderlich.</p>
+                    <p class="text-gray-300 mb-6">Dein Schulabschluss ist der Schlüssel. Folgende Dokumente und Tests
+                        sind dafür erforderlich.</p>
                     <div class="bg-[#00254a] rounded-lg p-6 border border-white/20">
                         <h4 class="font-bold text-lg mb-4">Erforderliche Unterlagen & Tests</h4>
                         <ul class="space-y-3 text-gray-200">
-                            <li class="flex items-center"><svg class="w-6 h-6 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>Abitur (oder vergleichbar)</li>
-                            <li class="flex items-center"><svg class="w-6 h-6 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>TOEFL oder Duolingo (Englischtest)</li>
-                            <li class="flex items-center"><svg class="w-6 h-6 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>SAT (Scholastic Aptitude Test) <span class="ml-2 text-xs font-semibold text-gray-400">(Optional)</span></li>
+                            <!-- Grüner Haken -->
+                            <li class="flex items-center"><svg class="w-6 h-6 mr-3 text-green-400" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>Abitur (oder vergleichbar)</li>
+                            <!-- Grüner Haken -->
+                            <li class="flex items-center"><svg class="w-6 h-6 mr-3 text-green-400" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>TOEFL oder Duolingo (Englischtest)</li>
+                            <!-- Grauer Haken (Optional) -->
+                            <li class="flex items-center"><svg class="w-6 h-6 mr-3 text-gray-400" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>SAT (Scholastic Aptitude Test) <span
+                                    class="ml-2 text-xs font-semibold text-gray-400">(Optional)</span></li>
                         </ul>
                     </div>
-                     <div class="bg-[#00254a] rounded-lg p-6 border border-white/20 mt-6">
+                    <div class="bg-[#00254a] rounded-lg p-6 border border-white/20 mt-6">
                         <h4 class="font-bold text-lg mb-4">Video-Anforderungen</h4>
                         <ul class="space-y-3 text-gray-200">
-                            <li class="flex items-center"><svg class="w-6 h-6 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>Highlight-Video (4-6 Min.)</li>
-                            <li class="flex items-center"><svg class="w-6 h-6 mr-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>2 komplette Spiele</li>
+                            <li class="flex items-center"><svg class="w-6 h-6 mr-3 text-gray-400" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>Highlight-Video (4-6 Min.)</li>
+                            <li class="flex items-center"><svg class="w-6 h-6 mr-3 text-gray-400" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>2 komplette Spiele</li>
                         </ul>
                     </div>
                 </div>
@@ -169,45 +264,61 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
         <!-- Section 3: Success Stories -->
         <section id="success-stories" class="mb-16 card">
             <h2 class="section-title text-white">Vergleichbare Erfolgsgeschichten</h2>
-            <p class="text-center text-gray-300 -mt-6 mb-10 max-w-2xl mx-auto">Andere Athleten mit einem ähnlichen Profil haben es bereits geschafft. Hier sind einige Beispiele, die dir als Inspiration dienen können.</p>
+            <p class="text-center text-gray-300 -mt-6 mb-10 max-w-2xl mx-auto">Andere Athleten mit einem ähnlichen
+                Profil haben es bereits geschafft. Hier sind einige Beispiele, die dir als Inspiration dienen können.
+            </p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="border border-white/20 rounded-lg p-4 text-center bg-[#00254a] hover:bg-[#001f3d] transition-colors">
-                    <img src="{{ roadmap.fields.erfolgsgeschichte1Bild.fields.file.url }}" alt="Profilbild" class="w-full h-48 object-cover rounded-md mb-4">
+                <div
+                    class="border border-white/20 rounded-lg p-4 text-center bg-[#00254a] hover:bg-[#001f3d] transition-colors">
+                    <img src="{{ roadmap.fields.erfolgsgeschichte1Bild.fields.file.url }}" alt="Profilbild"
+                        class="w-full h-48 object-cover rounded-md mb-4">
                     <h4 class="text-xl font-bold text-white">{{ roadmap.fields.erfolgsgeschichte1Name }}</h4>
                     <p class="text-gray-300">{{ roadmap.fields.erfolgsgeschichte1Beschreibung }}</p>
-                    <a href="{{ roadmap.fields.erfolgsgeschichte1Link }}" target="_blank" class="mt-4 inline-block bg-[#D1192D] text-white font-bold py-2 px-6 rounded-lg hover:bg-[#b91c2a] transition-colors">
+                    <a href="{{ roadmap.fields.erfolgsgeschichte1Link }}" target="_blank"
+                        class="mt-4 inline-block bg-[#D1192D] text-white font-bold py-2 px-6 rounded-lg hover:bg-[#b91c2a] transition-colors">
                         Zum Online-Profil →
                     </a>
                 </div>
-                <div class="border border-white/20 rounded-lg p-4 text-center bg-[#00254a] hover:bg-[#001f3d] transition-colors">
-                    <img src="{{ roadmap.fields.erfolgsgeschichte2Bild.fields.file.url }}" alt="Profilbild" class="w-full h-48 object-cover rounded-md mb-4">
+                <div
+                    class="border border-white/20 rounded-lg p-4 text-center bg-[#00254a] hover:bg-[#001f3d] transition-colors">
+                    <img src="{{ roadmap.fields.erfolgsgeschichte2Bild.fields.file.url }}" alt="Profilbild"
+                        class="w-full h-48 object-cover rounded-md mb-4">
                     <h4 class="text-xl font-bold text-white">{{ roadmap.fields.erfolgsgeschichte2Name }}</h4>
                     <p class="text-gray-300">{{ roadmap.fields.erfolgsgeschichte2Beschreibung }}</p>
-                    <a href="{{ roadmap.fields.erfolgsgeschichte2Link }}" target="_blank" class="mt-4 inline-block bg-[#D1192D] text-white font-bold py-2 px-6 rounded-lg hover:bg-[#b91c2a] transition-colors">
+                    <a href="{{ roadmap.fields.erfolgsgeschichte2Link }}" target="_blank"
+                        class="mt-4 inline-block bg-[#D1192D] text-white font-bold py-2 px-6 rounded-lg hover:bg-[#b91c2a] transition-colors">
                         Zum Online-Profil →
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- Section 4: Finance & Timeline -->
+        <!-- Section 4: Finance & Timeline (inkl. Pakete & 3 Säulen) -->
         <section id="finance-timeline" class="mb-16 card">
-             <h2 class="section-title text-white">Finanzen & Zeitplan</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            <h2 class="section-title text-white">Finanzen & Zeitplan</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12">
                 <!-- Financial -->
                 <div class="flex flex-col">
                     <h3 class="text-2xl font-bold mb-4 text-red-400">Finanzielle Einschätzung</h3>
-                    <p class="text-gray-300 mb-6">Unsere Aufgabe ist es, den Wert deines Stipendiums zu maximieren, um deinen Eigenanteil so gering wie möglich zu halten.</p>
-                    <div class="bg-[#00254a] p-6 rounded-lg border border-white/20 text-center flex-grow flex flex-col justify-center">
+                    <p class="text-gray-300 mb-6">Unsere Aufgabe ist es, den Wert deines Stipendiums zu maximieren, um
+                        deinen Eigenanteil so gering wie möglich zu halten.</p>
+                    <div
+                        class="bg-[#00254a] p-6 rounded-lg border border-white/20 text-center flex-grow flex flex-col justify-center">
                         <div>
-                            <p class="text-sm text-gray-400 uppercase tracking-wider">Gesamtwert pro Jahr (beinhaltet Studiengebühren, Unterkunft und Verpflegung)</p>
+                            <p class="text-sm text-gray-400 uppercase tracking-wider">Gesamtwert pro Jahr (beinhaltet
+                                Studiengebühren, Unterkunft und Verpflegung)</p>
                             <p class="text-3xl font-bold text-gray-500 line-through my-1">$20.000 - $40.000</p>
                         </div>
                         <div class="text-2xl font-bold text-red-400 my-4">- DEIN POTENZIELLES STIPENDIUM -</div>
                         <div class="bg-[#002D56] p-6 rounded-lg shadow-inner">
-                            <p class="text-sm text-gray-300 uppercase tracking-wider">Dein voraussichtlicher Eigenanteil</p>
-                            <p class="text-4xl font-black text-green-400 my-1">{{ roadmap.fields.finanzenEigenanteilMonatlich }}</p>
-                            <p class="text-lg text-green-200 font-semibold">({{ roadmap.fields.finanzenEigenanteilJaehrlich }})</p>
+                            <p class="text-sm text-gray-300 uppercase tracking-wider">Dein voraussichtlicher Eigenanteil
+                            </p>
+                            <!-- Grüne Schrift -->
+                            <p class="text-4xl font-black text-green-400 my-1">{{
+                                roadmap.fields.finanzenEigenanteilMonatlich }}</p>
+                            <!-- Grüne Schrift -->
+                            <p class="text-lg text-green-200 font-semibold">({{
+                                roadmap.fields.finanzenEigenanteilJaehrlich }})</p>
                         </div>
                     </div>
                 </div>
@@ -219,86 +330,561 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                         <div class="timeline-item relative pb-8">
                             <div class="timeline-path"></div>
                             <h4 class="font-bold text-lg text-white">Entscheidung treffen</h4>
-                            <p class="text-gray-300 text-sm">Besprich dich mit deinen Eltern und deinem Berater, um den Weg in die USA verbindlich zu starten.</p>
+                            <p class="text-gray-300 text-sm">Besprich dich mit deinen Eltern und deinem Berater, um den
+                                Weg in die USA verbindlich zu starten.</p>
                         </div>
                         <div class="timeline-item relative pb-8">
-                             <div class="timeline-path"></div>
+                            <div class="timeline-path"></div>
                             <h4 class="font-bold text-lg text-white">Profil erstellen</h4>
-                            <p class="text-gray-300 text-sm">Gemeinsam erstellen wir dein professionelles Online-Profil inklusive Highlight-Video, um Coaches auf dich aufmerksam zu machen.</p>
+                            <p class="text-gray-300 text-sm">Gemeinsam erstellen wir dein professionelles Online-Profil
+                                inklusive Highlight-Video, um Coaches auf dich aufmerksam zu machen.</p>
                         </div>
                         <div class="timeline-item relative pb-8">
-                             <div class="timeline-path"></div>
+                            <div class="timeline-path"></div>
                             <h4 class="font-bold text-lg text-white">Tests & Vorbereitung</h4>
-                            <p class="text-gray-300 text-sm">Wir managen mit dir die komplette Vorbereitung: von den Zulassungstests (SAT, TOEFL) bis zu den Visa-Unterlagen.</p>
+                            <p class="text-gray-300 text-sm">Wir managen mit dir die komplette Vorbereitung: von den
+                                Zulassungstests (SAT, TOEFL) bis zu den Visa-Unterlagen.</p>
                         </div>
-                         <div class="timeline-item relative">
+                        <div class="timeline-item relative">
                             <h4 class="font-bold text-lg text-white">Kontakt mit Coaches & Zusage</h4>
-                            <p class="text-gray-300 text-sm">Wir bringen dich mit interessierten US-Coaches zusammen. Du führst Gespräche und entscheidest dich für dein bestes Angebot.</p>
+                            <p class="text-gray-300 text-sm">Wir bringen dich mit interessierten US-Coaches zusammen. Du
+                                führst Gespräche und entscheidest dich für dein bestes Angebot.</p>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- TEILER 1 (Linie) -->
+            <div class="border-t border-white/10 my-8 max-w-5xl mx-auto"></div>
+
+            <!-- SEKTION: Flexible Zahlungsmodelle (fest integriert) -->
+            <div id="honorar" class="mb-12">
+                <h2 class="section-title text-white">Unsere Pakete</h2>
+                <p class="text-center text-gray-300 mb-8 max-w-2xl mx-auto">Wähle das Zahlungsmodell, das am besten zu
+                    dir passt. Der Leistungsumfang ist bei beiden Optionen <strong>identisch</strong> – wir bringen dich
+                    ans Ziel.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                    <!-- Option 1: Direktzahlung -->
+                    <div
+                        class="bg-[#00254a] rounded-lg p-6 border border-white/20 flex flex-col relative overflow-hidden group hover:border-red-400/50 transition-all">
+                        <div
+                            class="absolute top-0 right-0 bg-[#D1192D] text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                            BELIEBT</div>
+                        <h4 class="text-xl font-bold text-white mb-2">Option 1: Direktzahlung</h4>
+                        <p class="text-gray-300 text-sm mb-4 flex-grow">Ideal für maximale Planungssicherheit. Du zahlst
+                            einmalig und wir starten sofort mit dem kompletten Prozess.</p>
+                        <div class="text-center mt-auto">
+                            <p class="text-3xl font-black text-white mb-4">3.250 €</p>
+                            <a href="https://athletesusa.org/de/payment/" target="_blank"
+                                class="block w-full bg-[#D1192D] text-white font-bold py-2 rounded-lg hover:bg-[#b91c2a] transition-colors">
+                                Option 1 wählen
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Option 2: Erfolgsbasiert -->
+                    <div
+                        class="bg-[#00254a] rounded-lg p-6 border border-white/20 flex flex-col group hover:border-red-400/50 transition-all">
+                        <h4 class="text-xl font-bold text-white mb-2">Option 2: Erfolgsbasiert</h4>
+                        <p class="text-gray-300 text-sm mb-4 flex-grow">Geringes Risiko. Du zahlst den Großteil erst,
+                            wenn du einem College zusagst.</p>
+                        <div class="text-center mt-auto">
+                            <div class="flex justify-center items-baseline space-x-2 mb-1">
+                                <span class="text-xl font-bold text-gray-400">950 €</span>
+                                <span class="text-sm text-gray-500">Start</span>
+                                <span class="text-gray-400">+</span>
+                                <span class="text-3xl font-black text-white">3.250 €</span>
+                                <span class="text-sm text-gray-500">bei Zusage</span>
+                            </div>
+                            <p class="text-xs text-gray-400 mb-4">* Keine Zusage = Keine Restzahlung</p>
+                            <a href="https://athletesusa.org/de/payment/" target="_blank"
+                                class="block w-full bg-white/10 text-white font-bold py-2 rounded-lg hover:bg-white/20 transition-colors border border-white/30">
+                                Option 2 wählen
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TEILER 2 (Linie) -->
+            <div class="border-t border-white/10 my-8 max-w-5xl mx-auto"></div>
+
+            <!-- NEU: Gesamtkostenübersicht (3 Säulen) - Unter den Paketen -->
+            <div id="gesamtkosten" class="mb-8">
+                <h2 class="section-title text-white">Gesamtkosten im Überblick</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-center">
+
+                    <!-- Säule 1: Agentur -->
+                    <div class="bg-[#00254a] p-6 rounded-lg border border-white/20 flex flex-col h-full">
+                        <div
+                            class="flex items-center justify-center w-12 h-12 bg-white/20 rounded-full mx-auto mb-4 text-2xl">
+                            🤝</div>
+                        <h3 class="text-xl font-bold text-white mb-2">1. Athletes USA</h3>
+                        <p class="text-gray-400 text-sm mb-4">Einmalige Investition für Vermittlung & Betreuung</p>
+                        <div class="mt-auto">
+                            <p class="text-2xl font-bold text-white">3.250 €</p>
+                            <p class="text-xs text-gray-500 mt-1">(ggf. aufgeteilt in Raten)</p>
+                        </div>
+                    </div>
+
+                    <!-- Säule 2: Prozess -->
+                    <div class="bg-[#00254a] p-6 rounded-lg border border-white/20 flex flex-col h-full relative group">
+                        <div
+                            class="flex items-center justify-center w-12 h-12 bg-white/20 rounded-full mx-auto mb-4 text-2xl">
+                            📋</div>
+                        <h3 class="text-xl font-bold text-white mb-2">2. Prozesskosten</h3>
+                        <p class="text-gray-400 text-sm mb-4">Variable Kosten an Dritte (Ämter, Testzentren, etc.)</p>
+
+                        <div class="text-left text-sm text-gray-300 mb-4 space-y-2 bg-[#001f3d] p-3 rounded-md">
+                            <p><strong class="text-white">Standard:</strong><br>
+                                • Übersetzungen, Sprachtests<br>
+                                • Visum & Gebühren</p>
+                            <p class="border-t border-white/10 pt-2"><strong class="text-white">Optional /
+                                    Situationsabhängig:</strong><br>
+                                • SAT Test, Gutachten<br>
+                                • Impfungen, Pass</p>
+                        </div>
+
+                        <div class="mt-auto">
+                            <p class="text-2xl font-bold text-white">ca. 500 - 1.500 €</p>
+                            <p class="text-xs text-gray-500 mt-1">(Verteilt über den Prozess)</p>
+                        </div>
+                    </div>
+
+                    <!-- Säule 3: USA (Budget) -->
+                    <div class="bg-[#00254a] p-6 rounded-lg border-2 border-green-500/50 flex flex-col h-full relative">
+                        <div
+                            class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
+                            DEIN ZIEL</div>
+                        <div
+                            class="flex items-center justify-center w-12 h-12 bg-green-500/20 rounded-full mx-auto mb-4 text-2xl">
+                            🇺🇸</div>
+                        <h3 class="text-xl font-bold text-white mb-2">3. Budget USA</h3>
+                        <p class="text-gray-400 text-sm mb-4">Jährliche Kosten für Wohnen, Essen, Studium & Versicherung
+                        </p>
+                        <div class="mt-auto">
+                            <p class="text-2xl font-bold text-green-400">{{ roadmap.fields.finanzenEigenanteilJaehrlich
+                                }}</p>
+                            <p class="text-xs text-gray-500 mt-1">(pro Jahr in den USA)</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </section>
-        
+
         <!-- Section 5: Next Steps -->
-        <section id="next-steps" class="card">
+        <section id="next-steps" class="mb-16 card">
             <h2 class="section-title text-white">Deine Nächsten Schritte</h2>
             <div class="flex flex-col md:flex-row md:items-start justify-between text-center max-w-5xl mx-auto">
                 <!-- Step 1 -->
                 <div class="flex flex-col items-center p-4">
-                    <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full text-3xl font-black text-white">1</div>
-                    <h4 class="font-bold mt-4 text-lg">Informieren</h4>
-                    <p class="text-sm text-gray-300">Lies alle Infos auf unserer <a href="https://athletesusa.org/de/university-placement/" target="_blank" class="text-white font-bold underline hover:text-red-400">Programm-Seite</a>.</p>
+                    <div
+                        class="flex items-center justify-center w-16 h-16 bg-white rounded-full text-3xl font-black text-[#002D56]">
+                        1</div>
+                    <h4 class="font-bold mt-4 text-lg text-white">Informieren</h4>
+                    <p class="text-sm text-gray-300">Lies alle Infos auf unserer <a
+                            href="https://athletesusa.org/de/university-placement/" target="_blank"
+                            class="text-white font-bold underline hover:text-red-400">Programm-Seite</a>.</p>
                 </div>
 
                 <!-- Connector -->
-                <div class="flex-grow hidden md:block h-1 w-full bg-white/20 rounded-full mx-4 self-center"></div>
-                <div class="md:hidden h-8 w-1 bg-white/20 my-2"></div>
+                <div class="flex-grow hidden md:block h-1 w-full bg-gray-300 rounded-full mx-4 self-center"></div>
+                <div class="md:hidden h-8 w-1 bg-gray-300 my-2"></div>
 
                 <!-- Step 2 -->
                 <div class="flex flex-col items-center p-4">
-                    <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full text-3xl font-black text-white">2</div>
-                    <h4 class="font-bold mt-4 text-lg">Anmelden</h4>
+                    <div
+                        class="flex items-center justify-center w-16 h-16 bg-white rounded-full text-3xl font-black text-[#002D56]">
+                        2</div>
+                    <h4 class="font-bold mt-4 text-lg text-white">Anmelden</h4>
                     <p class="text-sm text-gray-300">Wähle eine Mitgliedschaft und buche deine Anmeldung online.</p>
                 </div>
-                
+
                 <!-- Connector -->
-                <div class="flex-grow hidden md:block h-1 w-full bg-white/20 rounded-full mx-4 self-center"></div>
-                <div class="md:hidden h-8 w-1 bg-white/20 my-2"></div>
+                <div class="flex-grow hidden md:block h-1 w-full bg-gray-300 rounded-full mx-4 self-center"></div>
+                <div class="md:hidden h-8 w-1 bg-gray-300 my-2"></div>
 
                 <!-- Step 3 -->
                 <div class="flex flex-col items-center p-4">
-                    <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full text-3xl font-black text-white">3</div>
-                    <h4 class="font-bold mt-4 text-lg">Abstimmen</h4>
+                    <div
+                        class="flex items-center justify-center w-16 h-16 bg-white rounded-full text-3xl font-black text-[#002D56]">
+                        3</div>
+                    <h4 class="font-bold mt-4 text-lg text-white">Abstimmen</h4>
                     <p class="text-sm text-gray-300">Informiere deinen Berater über deine Entscheidung.</p>
                 </div>
-                
+
                 <!-- Connector -->
-                <div class="flex-grow hidden md:block h-1 w-full bg-white/20 rounded-full mx-4 self-center"></div>
-                <div class="md:hidden h-8 w-1 bg-white/20 my-2"></div>
+                <div class="flex-grow hidden md:block h-1 w-full bg-gray-300 rounded-full mx-4 self-center"></div>
+                <div class="md:hidden h-8 w-1 bg-gray-300 my-2"></div>
 
                 <!-- Step 4 -->
                 <div class="flex flex-col items-center p-4">
-                    <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-full text-3xl font-black text-white">4</div>
-                    <h4 class="font-bold mt-4 text-lg">Durchstarten</h4>
+                    <div
+                        class="flex items-center justify-center w-16 h-16 bg-white rounded-full text-3xl font-black text-[#002D56]">
+                        4</div>
+                    <h4 class="font-bold mt-4 text-lg text-white">Durchstarten</h4>
                     <p class="text-sm text-gray-300">Der offizielle Recruiting-Prozess beginnt. Wir legen los!</p>
                 </div>
             </div>
         </section>
-        
+
+        <!-- NEUE SEKTION: Wusstest du schon? -->
+        <section id="knowledge" class="mb-16 card">
+            <h2 class="section-title text-white">Wusstest du schon?</h2>
+            <div class="space-y-6">
+
+                <!-- Akkordeon 1: Über Athletes USA -->
+                <details
+                    class="group bg-[#00254a] rounded-lg border border-white/20 overflow-hidden transition-all duration-300 open:bg-[#002D56] open:ring-1 open:ring-white/30">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h3 class="text-xl font-bold text-white">Wer ist Athletes USA?</h3>
+                        <span class="transition transform group-open:rotate-180 text-white">
+                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="text-gray-300 p-6 pt-6 leading-relaxed border-t border-white/10 mt-2">
+                        <p class="mb-6 font-medium text-lg leading-relaxed text-white">
+                            Athletes USA ist nicht nur eine Agentur – wir sind dein Tor zur
+                            Weltklasse.
+                            Seit 2008 dominieren wir den Markt für Sportstipendien.
+                        </p>
+
+                        <!-- Stats Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                            <div class="bg-white/10 rounded-lg p-4 text-center border border-white/5 backdrop-blur-sm">
+                                <div class="text-3xl font-black text-white mb-1">4.000+</div>
+                                <div class="text-xs uppercase tracking-widest text-gray-400">Vermittelte Athleten</div>
+                            </div>
+                            <div class="bg-white/10 rounded-lg p-4 text-center border border-white/5 backdrop-blur-sm">
+                                <div class="text-3xl font-black text-white mb-1">$100M+</div>
+                                <div class="text-xs uppercase tracking-widest text-gray-400">Stipendien-Volumen</div>
+                            </div>
+                            <div class="bg-white/10 rounded-lg p-4 text-center border border-white/5 backdrop-blur-sm">
+                                <div class="text-3xl font-black text-white mb-1">20.000+</div>
+                                <div class="text-xs uppercase tracking-widest text-gray-400">College Coaches</div>
+                            </div>
+                        </div>
+
+                        <p class="text-sm">
+                            Unser Team besteht aus ehemaligen Division-1-Athleten und Scouts, die genau wissen,
+                            was Coaches suchen. Wir bringen dich nicht nur irgendwo unter – wir bringen dich
+                            an die <strong>bestmögliche Uni</strong> für deine Karriere.
+                        </p>
+                    </div>
+                </details>
+
+                <!-- Akkordeon 2: Bekannte Spieler / Hall of Fame -->
+                <details
+                    class="group bg-[#00254a] rounded-lg border border-white/20 overflow-hidden transition-all duration-300 open:bg-[#002D56] open:ring-1 open:ring-white/30">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h3 class="text-xl font-bold text-white">Hall of Fame</h3>
+                        <span class="transition transform group-open:rotate-180 text-white">
+                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-6 pt-6 border-t border-white/10 mt-2">
+                        <p class="text-gray-300 mb-6">
+                            Von der Uni in die Weltspitze. Diese Athleten haben den Schritt gewagt und ihre Karriere in
+                            den USA gestartet.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                            <!-- Player Card 1 (Morris Duggan) -->
+                            <div
+                                class="group relative h-96 rounded-xl overflow-hidden cursor-pointer shadow-2xl border border-white/10 transform transition-all duration-500 hover:scale-[1.02]">
+                                <!-- Background Image (Placeholder) -->
+                                <img src="C:\Users\lucas\Desktop\Roadmap layout\assets\morris duggan.jpg"
+                                    alt="Morris Duggan"
+                                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 opacity-70 group-hover:opacity-50">
+
+                                <!-- Gradient Overlay -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-[#002D56] via-[#002D56]/60 to-transparent opacity-90 group-hover:opacity-95 transition-opacity duration-500">
+                                </div>
+
+                                <!-- Content -->
+                                <div
+                                    class="absolute bottom-0 left-0 w-full p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                    <h4
+                                        class="text-3xl font-black text-white italic uppercase tracking-tighter mb-2 leading-none">
+                                        Morris<br>Duggan</h4>
+
+                                    <div
+                                        class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-out">
+                                        <div class="overflow-hidden">
+                                            <div class="pt-4 border-t-4 border-red-500 mt-2">
+                                                <p class="text-red-400 font-bold uppercase tracking-wider text-sm mb-1">
+                                                    Iowa Lakes CC (NJCAA D2)<br>
+                                                    Marshall University (NCAA D1)</p>
+                                                <p class="text-white text-lg font-bold mb-2">NCAA Champion &
+                                                    MLS Spieler</p>
+                                                <p class="text-gray-300 text-sm leading-snug">
+                                                    Startete seine Reise am College und spielt heute gegen
+                                                    Lionel Messi in der MLS.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Player Card 2 (Placeholder/Example) -->
+                            <div
+                                class="group relative h-96 rounded-xl overflow-hidden cursor-pointer shadow-2xl border border-white/10 transform transition-all duration-500 hover:scale-[1.02]">
+                                <!-- Background Image -->
+                                <img src="C:\Users\lucas\Desktop\Roadmap layout\assets\marlene berlinghoff.jpg"
+                                    alt="Top Talent"
+                                    class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-110 opacity-70 group-hover:opacity-50">
+
+                                <!-- Gradient Overlay -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-[#002D56] via-[#002D56]/60 to-transparent opacity-90 group-hover:opacity-95 transition-opacity duration-500">
+                                </div>
+
+                                <!-- Content -->
+                                <div
+                                    class="absolute bottom-0 left-0 w-full p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                    <h4
+                                        class="text-3xl font-black text-white italic uppercase tracking-tighter mb-2 leading-none">
+                                        Marlene<br>Berlinghoff</h4>
+
+                                    <div
+                                        class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-out">
+                                        <div class="overflow-hidden">
+                                            <div class="pt-4 border-t-4 border-green-500 mt-2">
+                                                <p
+                                                    class="text-green-400 font-bold uppercase tracking-wider text-sm mb-1">
+                                                    Manhattan College (NCAA D1)</p>
+                                                <p class="text-white text-lg font-bold mb-2">Graduate Suden in New York
+                                                </p>
+                                                <p class="text-gray-300 text-sm leading-snug">
+                                                    Hat sich ihren Traum von der University in New York City
+                                                    verwirklicht.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Player Card 3 (New Placeholder) -->
+                            <div
+                                class="group relative h-96 rounded-xl overflow-hidden cursor-pointer shadow-2xl border border-white/10 transform transition-all duration-500 hover:scale-[1.02]">
+                                <!-- Background Image -->
+                                <img src="C:\Users\lucas\Desktop\Roadmap layout\assets\carlo Romberg.jpg"
+                                    alt="Top Talent 3"
+                                    class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-110 opacity-70 group-hover:opacity-50">
+
+                                <!-- Gradient Overlay -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-[#002D56] via-[#002D56]/60 to-transparent opacity-90 group-hover:opacity-95 transition-opacity duration-500">
+                                </div>
+
+                                <!-- Content -->
+                                <div
+                                    class="absolute bottom-0 left-0 w-full p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                    <h4
+                                        class="text-3xl font-black text-white italic uppercase tracking-tighter mb-2 leading-none">
+                                        Carlo<br>Romberg</h4>
+
+                                    <div
+                                        class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-out">
+                                        <div class="overflow-hidden">
+                                            <div class="pt-4 border-t-4 border-blue-400 mt-2">
+                                                <p
+                                                    class="text-blue-400 font-bold uppercase tracking-wider text-sm mb-1">
+                                                    Montgomery College (NJCAA D1)<br>
+                                                    Tyler Junior College (NJCAA D1) <br>
+                                                    Marshall University (NCAA D1)</p>
+                                                <p class="text-white text-lg font-bold mb-2">Über ein Junior College zur
+                                                    Top Universität</p>
+                                                <p class="text-gray-300 text-sm leading-snug">
+                                                    Carlo wurde 2024 als All American ausgezeichnet und transferierte zu
+                                                    einer der besten Fußball Unis im Land.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Player Card 4 (New Placeholder) -->
+                            <div
+                                class="group relative h-96 rounded-xl overflow-hidden cursor-pointer shadow-2xl border border-white/10 transform transition-all duration-500 hover:scale-[1.02]">
+                                <!-- Background Image -->
+                                <img src="C:\Users\lucas\Desktop\Roadmap layout\assets\emil jääskeläinen.jpg"
+                                    alt="Top Talent 4"
+                                    class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-110 opacity-70 group-hover:opacity-50">
+
+                                <!-- Gradient Overlay -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-[#002D56] via-[#002D56]/60 to-transparent opacity-90 group-hover:opacity-95 transition-opacity duration-500">
+                                </div>
+
+                                <!-- Content -->
+                                <div
+                                    class="absolute bottom-0 left-0 w-full p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                    <h4
+                                        class="text-3xl font-black text-white italic uppercase tracking-tighter mb-2 leading-none">
+                                        Emil<br>Jääskeläinen</h4>
+
+                                    <div
+                                        class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-out">
+                                        <div class="overflow-hidden">
+                                            <div class="pt-4 border-t-4 border-yellow-400 mt-2">
+                                                <p
+                                                    class="text-yellow-400 font-bold uppercase tracking-wider text-sm mb-1">
+                                                    Long sland University (NCAA D1) <br> University of Akron (NCAA D1)
+                                                </p>
+                                                <p class="text-white text-lg font-bold mb-2">Top-Torschütze der NCAA D1
+                                                    & MLS-Draft Spieler</p>
+                                                <p class="text-gray-300 text-sm leading-snug">
+                                                    Emil erzielte in der College Season 2024, 23 Tore in 21 Spielen und
+                                                    wurde am Ende der Saison von St.Louis City in die MLS gedraftet.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </details>
+
+                <!-- Akkordeon 3: Partner Unis -->
+                <details
+                    class="group bg-[#00254a] rounded-lg border border-white/20 overflow-hidden transition-all duration-300 open:bg-[#002D56] open:ring-1 open:ring-white/30">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h3 class="text-xl font-bold text-white">Unser Uni-Netzwerk</h3>
+                        <span class="transition transform group-open:rotate-180 text-white">
+                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                width="24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="p-6 pt-6 border-t border-white/10 mt-2">
+                        <p class="text-gray-300 mb-6">
+                            Unser Netzwerk umfasst über 3.000 Universitäten in den gesamten USA. Hier sind
+                            einige unserer Partner-Unis.
+                        </p>
+
+                        <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                            <!-- Logo 1 -->
+                            <div
+                                class="bg-white rounded-lg p-4 flex items-center justify-center h-24 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                                <a href="https://www.marshall.edu" target="_blank">
+                                    <img src="C:\Users\lucas\Desktop\Roadmap layout\assets\marshall.jpg" alt="Marshall"
+                                        class="max-h-16 max-w-full object-contain">
+                                </a>
+                            </div>
+                            <!-- Logo 2 -->
+                            <div
+                                class="bg-white rounded-lg p-4 flex items-center justify-center h-24 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                                <a href="https://www.ju.edu" target="_blank">
+                                    <img src="C:\Users\lucas\Desktop\Roadmap layout\assets\jacksonville.jpg"
+                                        alt="Jacksonville" class="max-h-16 max-w-full object-contain">
+                                </a>
+                            </div>
+                            <!-- Logo 3 -->
+                            <div
+                                class="bg-white rounded-lg p-4 flex items-center justify-center h-24 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                                <a href="https://www.liu.edu" target="_blank">
+                                    <img src="C:\Users\lucas\Desktop\Roadmap layout\assets\liu.jpg" alt="LIU"
+                                        class="max-h-16 max-w-full object-contain">
+                                </a>
+                            </div>
+                            <!-- Logo 4 -->
+                            <div
+                                class="bg-white rounded-lg p-4 flex items-center justify-center h-24 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                                <a href="https://www.pba.edu" target="_blank">
+                                    <img src="C:\Users\lucas\Desktop\Roadmap layout\assets\pba.jpg" alt="PBA"
+                                        class="max-h-16 max-w-full object-contain">
+                                </a>
+                            </div>
+                            <!-- Logo 5 -->
+                            <div
+                                class="bg-white rounded-lg p-4 flex items-center justify-center h-24 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                                <a href="https://manhattan.edu" target="_blank">
+                                    <img src="C:\Users\lucas\Desktop\Roadmap layout\assets\manhattan.jpg"
+                                        alt="Manhattan" class="max-h-16 max-w-full object-contain">
+                                </a>
+                            </div>
+                            <!-- Logo 6 -->
+                            <div
+                                class="bg-white rounded-lg p-4 flex items-center justify-center h-24 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                                <a href="https://www.slu.edu" target="_blank">
+                                    <img src="C:\Users\lucas\Desktop\Roadmap layout\assets\slu.jpg" alt="SLU"
+                                        class="max-h-16 max-w-full object-contain">
+                                </a>
+                            </div>
+                            <!-- Logo 7 -->
+                            <div
+                                class="bg-white rounded-lg p-4 flex items-center justify-center h-24 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                                <a href="https://www.psu.edu" target="_blank">
+                                    <img src="C:\Users\lucas\Desktop\Roadmap layout\assets\pennstate.jpg"
+                                        alt="Penn State" class="max-h-16 max-w-full object-contain transform scale-125">
+                                </a>
+                            </div>
+                            <!-- Logo 8 -->
+                            <div
+                                class="bg-white rounded-lg p-4 flex items-center justify-center h-24 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                                <a href="https://www.hofstra.edu" target="_blank">
+                                    <img src="C:\Users\lucas\Desktop\Roadmap layout\assets\hoftsra.jpg" alt="Hofstra"
+                                        class="max-h-16 max-w-full object-contain">
+                                </a>
+                            </div>
+                            <!-- Logo 9 -->
+                            <div
+                                class="bg-white rounded-lg p-4 flex items-center justify-center h-24 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                                <a href="https://www.cornell.edu" target="_blank">
+                                    <img src="C:\Users\lucas\Desktop\Roadmap layout\assets\cornell.jpg" alt="Cornell"
+                                        class="max-h-16 max-w-full object-contain">
+                                </a>
+                            </div>
+                            <!-- Logo 10 -->
+                            <div
+                                class="bg-white rounded-lg p-4 flex items-center justify-center h-24 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                                <a href="https://www.calstate.edu" target="_blank">
+                                    <img src="C:\Users\lucas\Desktop\Roadmap layout\assets\calstate.jpg" alt="Cal State"
+                                        class="max-h-16 max-w-full object-contain">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+
+            </div>
+        </section>
+
         <!-- Footer -->
         <footer class="mt-16 card bg-[#00254a] border-white/20">
             <div class="flex flex-col md:flex-row items-center text-center md:text-left">
-                <img src="{{ roadmap.fields.beraterBild.fields.file.url }}" alt="Berater Foto" class="w-24 h-24 rounded-full mb-6 md:mb-0 md:mr-8 object-cover border-4 border-white shadow-md">
+                <img src="{{ roadmap.fields.beraterBild.fields.file.url }}" alt="Berater Foto"
+                    class="w-24 h-24 rounded-full mb-6 md:mb-0 md:mr-8 object-cover border-4 border-white shadow-md">
                 <div>
                     <h3 class="text-2xl font-bold text-white">Dein Persönlicher Ansprechpartner</h3>
-                    <p class="text-gray-300 mt-2 mb-4">Ich bin bei allen Fragen für dich da und begleite dich auf deinem Weg zum Stipendium.</p>
+                    <p class="text-gray-300 mt-2 mb-4">Ich bin bei allen Fragen für dich da und begleite dich auf deinem
+                        Weg zum Stipendium.</p>
                     <p class="font-bold text-lg text-white">{{ roadmap.fields.beraterName }}</p>
                     <p class="text-gray-400">University Search Team, Athletes USA</p>
                     <p class="mt-3">
-                        <a href="mailto:{{ roadmap.fields.beraterEmail }}" class="text-white hover:underline font-semibold">{{ roadmap.fields.beraterEmail }}</a>
+                        <a href="mailto:{{ roadmap.fields.beraterEmail }}"
+                            class="text-white hover:underline font-semibold">{{ roadmap.fields.beraterEmail }}</a>
                         <span class="text-gray-500 mx-2">|</span>
-                        <a href="tel:{{ roadmap.fields.beraterTelefon }}" class="text-white hover:underline font-semibold">{{ roadmap.fields.beraterTelefon }}</a>
+                        <a href="tel:{{ roadmap.fields.beraterTelefon }}"
+                            class="text-white hover:underline font-semibold">{{ roadmap.fields.beraterTelefon }}</a>
                     </p>
                 </div>
             </div>
@@ -307,4 +893,5 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
     </div>
 
 </body>
+
 </html>
