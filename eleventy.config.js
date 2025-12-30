@@ -2,8 +2,10 @@ const { documentToHtmlString } = require('@contentful/rich-text-html-renderer');
 
 module.exports = function(eleventyConfig) {
     
-    // DIESER TEIL IST ENTSCHEIDEND
-    // Er definiert, was der richText-Filter tun soll.
+    // WICHTIG: Das hier sorgt dafür, dass deine Bilder mit hochgeladen werden
+    eleventyConfig.addPassthroughCopy("assets");
+
+    // Filter für Rich Text
     eleventyConfig.addFilter("richText", (value) => {
         if (value) {
             return documentToHtmlString(value);
@@ -11,14 +13,17 @@ module.exports = function(eleventyConfig) {
         return "";
     });
 
-    // Dieser Filter formatiert das Datum schöner.
+    // Filter für das Datum
     eleventyConfig.addFilter("readableDate", (dateObj) => {
-       const date = new Date(dateObj);
-       return date.toLocaleDateString("de-DE", {
-           day: "2-digit",
-           month: "2-digit",
-           year: "numeric"
-       });
+       if (dateObj) {
+           const date = new Date(dateObj);
+           return date.toLocaleDateString("de-DE", {
+               day: "2-digit",
+               month: "2-digit",
+               year: "numeric"
+           });
+       }
+       return "";
     });
 
     return {
