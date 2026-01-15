@@ -3,15 +3,15 @@ pagination:
     data: contentful.roadmap
     size: 1
     alias: roadmap
-permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
+permalink: "en/roadmaps/{{ roadmap.sys.id }}/index.html"
 ---
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deine Persönliche Roadmap für {{ roadmap.fields.athletenName }}</title>
+    <title>Your Personal Roadmap for {{ roadmap.fields.athletenName }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,7 +45,7 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
             font-size: 2.25rem;
             /* 36px */
             font-weight: 900;
-            /* Farbe HIER ENTFERNT, damit text-white funktioniert! */
+            /* Color REMOVED HERE, so text-white works! */
             text-align: center;
             margin-bottom: 2.5rem;
         }
@@ -124,93 +124,87 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
 
         <header class="flex justify-between items-start md:items-center mb-16 relative">
             <div class="text-left">
-                <h1 class="text-4xl md:text-5xl font-black text-[#002D56] mb-2">Deine Persönliche Roadmap zum
-                    US-Stipendium</h1>
-                <p class="text-lg text-gray-500">Für <span class="font-bold text-gray-800">{{
-                        roadmap.fields.athletenName }}</span> | Erstellt: <span class="font-bold text-gray-800">{{
+                <h1 class="text-4xl md:text-5xl font-black text-[#002D56] mb-2">Your Personal Roadmap to a US Scholarship</h1>
+                <p class="text-lg text-gray-500">For <span class="font-bold text-gray-800">{{
+                        roadmap.fields.athletenName }}</span> | Created: <span class="font-bold text-gray-800">{{
                         roadmap.fields.erstellungsDatum | readableDate }}</span></p>
             </div>
             <div class="flex flex-col items-end">
-                <img src="https://athletesusa.org/wp-content/uploads/2021/11/Athletes-USA.png" alt="Firmenlogo"
+                <img src="https://athletesusa.org/wp-content/uploads/2021/11/Athletes-USA.png" alt="Company Logo"
                     class="w-40 md:w-48 mb-4">
                 <!-- Language Switcher -->
-                <a href="/en/roadmaps/{{ roadmap.sys.id }}/" class="text-sm font-bold text-[#002D56] hover:text-[#D1192D] transition-colors flex items-center">
-                    <span class="mr-2">🇺🇸</span> English
+                <a href="/roadmaps/{{ roadmap.sys.id }}/" class="text-sm font-bold text-[#002D56] hover:text-[#D1192D] transition-colors flex items-center">
+                    <span class="mr-2">🇩🇪</span> Deutsch
                 </a>
             </div>
         </header>
 
         <!-- Section 1: Potential -->
         <section id="overview" class="mb-16">
-            <!-- HIER WICHTIG: text-[#002D56] explizit hinzugefügt -->
-            <h2 class="section-title text-[#002D56]">Dein Potenzial auf einen Blick</h2>
+            <!-- IMPORTANT: text-[#002D56] explicitly added -->
+            <h2 class="section-title text-[#002D56]">Your Potential at a Glance</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                 <div class="card">
                     <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-white/20 mb-4">
                         <span class="text-3xl">🏆</span>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">SPORTLICHES POTENZIAL</h3>
-                    <p class="text-gray-300">Realistische Optionen für dich sind: <br><span
+                    <h3 class="text-xl font-bold mb-2">ATHLETIC POTENTIAL</h3>
+                    <p class="text-gray-300">Realistic options for you are: <br><span
                             class="font-bold text-lg text-white">{{ roadmap.fields.potenzialOptionen }}</span></p>
                 </div>
                 <div class="card">
                     <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-white/20 mb-4">
                         <span class="text-3xl">🎓</span>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">AKADEMISCHE CHANCE</h3>
-                    <p class="text-gray-300">Dein Abschluss qualifiziert dich für ein <span
-                            class="font-bold text-lg text-white">{{ roadmap.fields.abschlussTyp }}</span>-Studium.</p>
+                    <h3 class="text-xl font-bold mb-2">ACADEMIC CHANCE</h3>
+                    <p class="text-gray-300">Your graduation qualifies you for a <span
+                            class="font-bold text-lg text-white">{{ roadmap.fields.abschlussTyp }}</span> degree.</p>
                 </div>
                 <div class="card">
                     <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-white/20 mb-4">
                         <span class="text-3xl">🗓️</span>
                     </div>
-                    <h3 class="text-xl font-bold mb-2 text-red-400">DEIN TIMING</h3>
-                    <p class="text-gray-300">Dein Zeitfenster für <span class="font-bold">{{
-                            roadmap.fields.startSemester }}</span> ist offen und als <span
-                            class="font-bold text-lg text-green-400">{{ roadmap.fields.timingBewertung }}</span>
-                        einzustufen.</p>
+                    <h3 class="text-xl font-bold mb-2 text-red-400">YOUR TIMING</h3>
+                    <p class="text-gray-300">Your window for <span class="font-bold">{{
+                            roadmap.fields.startSemester }}</span> is open and rated as <span
+                            class="font-bold text-lg text-green-400">{{ roadmap.fields.timingBewertung }}</span>.</p>
                 </div>
             </div>
         </section>
 
         <!-- Section 2: Analysis -->
         <section id="analysis" class="mb-16 card">
-            <h2 class="section-title text-white">Analyse im Detail</h2>
+            <h2 class="section-title text-white">Detailed Analysis</h2>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                 <!-- Athletic Assessment -->
                 <div>
-                    <h3 class="text-2xl font-bold mb-4">Sportliche Einschätzung</h3>
-                    <p class="text-gray-300 mb-6">Basierend auf deinem sportlichen Level haben wir eingeschätzt, wo
-                        deine besten Chancen für ein hohes Stipendium liegen.</p>
+                    <h3 class="text-2xl font-bold mb-4">Athletic Assessment</h3>
+                    <p class="text-gray-300 mb-6">Based on your athletic level, we have assessed where your best chances for a high scholarship lie.</p>
 
                     <div class="space-y-4">
                         <div class="border border-white/20 rounded-lg p-4 bg-[#00254a]">
                             <h4 class="font-bold text-lg">NCAA (National Collegiate Athletic Association)</h4>
-                            <p class="text-sm text-gray-300 mt-1 mb-3">Die größte und bekannteste Organisation mit dem
-                                höchsten sportlichen Niveau (D1, D2, D3).</p>
+                            <p class="text-sm text-gray-300 mt-1 mb-3">The largest and most well-known organization with the highest athletic level (D1, D2, D3).</p>
                             <div class="pt-3 border-t border-white/20">
-                                <h5 class="font-semibold text-gray-200 text-sm mb-2">Deine realistische Chance:</h5>
+                                <h5 class="font-semibold text-gray-200 text-sm mb-2">Your Realistic Chance:</h5>
                                 <div class="text-sky-200 text-sm font-semibold">{{ roadmap.fields.einschaetzungNcaa |
                                     richText | safe }}</div>
                             </div>
                         </div>
                         <div class="border border-white/20 rounded-lg p-4 bg-[#00254a]">
                             <h4 class="font-bold text-lg">NAIA (National Association of Intercollegiate Athletics)</h4>
-                            <p class="text-sm text-gray-300 mt-1 mb-3">Bietet eine bessere Balance zwischen Sport &
-                                Akademie und eine persönlichere Uni-Erfahrung.</p>
+                            <p class="text-sm text-gray-300 mt-1 mb-3">Offers a better balance between sports & academics and a more personal university experience.</p>
                             <div class="pt-3 border-t border-white/20">
-                                <h5 class="font-semibold text-gray-200 text-sm mb-2">Deine realistische Chance:</h5>
+                                <h5 class="font-semibold text-gray-200 text-sm mb-2">Your Realistic Chance:</h5>
                                 <div class="text-sky-200 text-sm font-semibold">{{ roadmap.fields.einschaetzungNaia |
                                     richText | safe }}</div>
                             </div>
                         </div>
                         <div class="border border-white/20 rounded-lg p-4 bg-[#00254a]">
                             <h4 class="font-bold text-lg">NJCAA (National Junior College Athletic Association)</h4>
-                            <p class="text-sm text-gray-300 mt-1 mb-3">Exzellenter Startpunkt für 2 Jahre, um sich für
-                                eine Top 4-Jahres-Uni zu empfehlen.</p>
+                            <p class="text-sm text-gray-300 mt-1 mb-3">Excellent starting point for 2 years to recommend yourself for a top 4-year university.</p>
                             <div class="pt-3 border-t border-white/20">
-                                <h5 class="font-semibold text-gray-200 text-sm mb-2">Deine realistische Chance:</h5>
+                                <h5 class="font-semibold text-gray-200 text-sm mb-2">Your Realistic Chance:</h5>
                                 <div class="text-sky-200 text-sm font-semibold">{{ roadmap.fields.einschaetzungNjcaa |
                                     richText | safe }}</div>
                             </div>
@@ -219,25 +213,24 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                 </div>
                 <!-- Academic Assessment -->
                 <div>
-                    <h3 class="text-2xl font-bold mb-4">Akademische Einschätzung</h3>
-                    <p class="text-gray-300 mb-6">Dein Schulabschluss ist der Schlüssel. Folgende Dokumente und Tests
-                        sind dafür erforderlich.</p>
+                    <h3 class="text-2xl font-bold mb-4">Academic Assessment</h3>
+                    <p class="text-gray-300 mb-6">Your school graduation is the key. The following documents and tests are required.</p>
                     <div class="bg-[#00254a] rounded-lg p-6 border border-white/20">
-                        <h4 class="font-bold text-lg mb-4">Erforderliche Unterlagen & Tests</h4>
+                        <h4 class="font-bold text-lg mb-4">Required Documents & Tests</h4>
                         <ul class="space-y-3 text-gray-200">
-                            <!-- Grüner Haken -->
+                            <!-- Green Check -->
                             <li class="flex items-center"><svg class="w-6 h-6 mr-3 text-green-400" fill="none"
                                     stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>Abitur (oder vergleichbar)</li>
-                            <!-- Grüner Haken -->
+                                </svg>High School Diploma (or equivalent)</li>
+                            <!-- Green Check -->
                             <li class="flex items-center"><svg class="w-6 h-6 mr-3 text-green-400" fill="none"
                                     stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>TOEFL oder Duolingo (Englischtest)</li>
-                            <!-- Grauer Haken (Optional) -->
+                                </svg>TOEFL or Duolingo (English Test)</li>
+                            <!-- Gray Check (Optional) -->
                             <li class="flex items-center"><svg class="w-6 h-6 mr-3 text-gray-400" fill="none"
                                     stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -247,18 +240,18 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                         </ul>
                     </div>
                     <div class="bg-[#00254a] rounded-lg p-6 border border-white/20 mt-6">
-                        <h4 class="font-bold text-lg mb-4">Video-Anforderungen</h4>
+                        <h4 class="font-bold text-lg mb-4">Video Requirements</h4>
                         <ul class="space-y-3 text-gray-200">
                             <li class="flex items-center"><svg class="w-6 h-6 mr-3 text-gray-400" fill="none"
                                     stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>Highlight-Video (4-6 Min.)</li>
+                                </svg>Highlight Video (4-6 Min.)</li>
                             <li class="flex items-center"><svg class="w-6 h-6 mr-3 text-gray-400" fill="none"
                                     stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>2 komplette Spiele</li>
+                                </svg>2 Full Games</li>
                         </ul>
                     </div>
                 </div>
@@ -267,60 +260,57 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
 
         <!-- Section 3: Success Stories -->
         <section id="success-stories" class="mb-16 card">
-            <h2 class="section-title text-white">Vergleichbare Erfolgsgeschichten</h2>
-            <p class="text-center text-gray-300 -mt-6 mb-10 max-w-2xl mx-auto">Andere Athleten mit einem ähnlichen
-                Profil haben es bereits geschafft. Hier sind einige Beispiele, die dir als Inspiration dienen können.
+            <h2 class="section-title text-white">Success Stories</h2>
+            <p class="text-center text-gray-300 -mt-6 mb-10 max-w-2xl mx-auto">Other athletes with a similar profile have already made it. Here are some examples to inspire you.
             </p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div
                     class="border border-white/20 rounded-lg p-4 text-center bg-[#00254a] hover:bg-[#001f3d] transition-colors">
-                    <img src="{{ roadmap.fields.erfolgsgeschichte1Bild.fields.file.url }}" alt="Profilbild"
+                    <img src="{{ roadmap.fields.erfolgsgeschichte1Bild.fields.file.url }}" alt="Profile Picture"
                         class="w-full h-48 object-cover rounded-md mb-4">
                     <h4 class="text-xl font-bold text-white">{{ roadmap.fields.erfolgsgeschichte1Name }}</h4>
                     <p class="text-gray-300">{{ roadmap.fields.erfolgsgeschichte1Beschreibung }}</p>
                     <a href="{{ roadmap.fields.erfolgsgeschichte1Link }}" target="_blank"
                         class="mt-4 inline-block bg-[#D1192D] text-white font-bold py-2 px-6 rounded-lg hover:bg-[#b91c2a] transition-colors">
-                        Zum Online-Profil →
+                        View Online Profile →
                     </a>
                 </div>
                 <div
                     class="border border-white/20 rounded-lg p-4 text-center bg-[#00254a] hover:bg-[#001f3d] transition-colors">
-                    <img src="{{ roadmap.fields.erfolgsgeschichte2Bild.fields.file.url }}" alt="Profilbild"
+                    <img src="{{ roadmap.fields.erfolgsgeschichte2Bild.fields.file.url }}" alt="Profile Picture"
                         class="w-full h-48 object-cover rounded-md mb-4">
                     <h4 class="text-xl font-bold text-white">{{ roadmap.fields.erfolgsgeschichte2Name }}</h4>
                     <p class="text-gray-300">{{ roadmap.fields.erfolgsgeschichte2Beschreibung }}</p>
                     <a href="{{ roadmap.fields.erfolgsgeschichte2Link }}" target="_blank"
                         class="mt-4 inline-block bg-[#D1192D] text-white font-bold py-2 px-6 rounded-lg hover:bg-[#b91c2a] transition-colors">
-                        Zum Online-Profil →
+                        View Online Profile →
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- Section 4: Finance & Timeline (inkl. Pakete & 3 Säulen) -->
+        <!-- Section 4: Finance & Timeline -->
         <section id="finance-timeline" class="mb-16 card">
-            <h2 class="section-title text-white">Finanzen & Zeitplan</h2>
+            <h2 class="section-title text-white">Finances & Timeline</h2>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12">
                 <!-- Financial -->
                 <div class="flex flex-col">
-                    <h3 class="text-2xl font-bold mb-4 text-red-400">Finanzielle Einschätzung</h3>
-                    <p class="text-gray-300 mb-6">Unsere Aufgabe ist es, den Wert deines Stipendiums zu maximieren, um
-                        deinen Eigenanteil so gering wie möglich zu halten.</p>
+                    <h3 class="text-2xl font-bold mb-4 text-red-400">Financial Assessment</h3>
+                    <p class="text-gray-300 mb-6">Our job is to maximize the value of your scholarship to keep your personal contribution as low as possible.</p>
                     <div
                         class="bg-[#00254a] p-6 rounded-lg border border-white/20 text-center flex-grow flex flex-col justify-center">
                         <div>
-                            <p class="text-sm text-gray-400 uppercase tracking-wider">Gesamtwert pro Jahr (beinhaltet
-                                Studiengebühren, Unterkunft und Verpflegung)</p>
+                            <p class="text-sm text-gray-400 uppercase tracking-wider">Total Cost per Year (includes Tuition, Room & Board)</p>
                             <p class="text-3xl font-bold text-gray-500 line-through my-1">$20.000 - $40.000</p>
                         </div>
-                        <div class="text-2xl font-bold text-red-400 my-4">- DEIN POTENZIELLES STIPENDIUM -</div>
+                        <div class="text-2xl font-bold text-red-400 my-4">- YOUR POTENTIAL SCHOLARSHIP -</div>
                         <div class="bg-[#002D56] p-6 rounded-lg shadow-inner">
-                            <p class="text-sm text-gray-300 uppercase tracking-wider">Dein voraussichtlicher Eigenanteil
+                            <p class="text-sm text-gray-300 uppercase tracking-wider">Your Expected Contribution
                             </p>
-                            <!-- Grüne Schrift -->
+                            <!-- Green Text -->
                             <p class="text-4xl font-black text-green-400 my-1">{{
                                 roadmap.fields.finanzenEigenanteilMonatlich }}</p>
-                            <!-- Grüne Schrift -->
+                            <!-- Green Text -->
                             <p class="text-lg text-green-200 font-semibold">({{
                                 roadmap.fields.finanzenEigenanteilJaehrlich }})</p>
                         </div>
@@ -328,149 +318,140 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                 </div>
                 <!-- Timeline -->
                 <div>
-                    <h3 class="text-2xl font-bold mb-4">Deine Schritte zum Stipendium</h3>
-                    <p class="text-gray-300 mb-6">Ein klarer Plan für die nächsten Monate.</p>
+                    <h3 class="text-2xl font-bold mb-4">Your Steps to a Scholarship</h3>
+                    <p class="text-gray-300 mb-6">A clear plan for the coming months.</p>
                     <div class="relative pl-5">
                         <div class="timeline-item relative pb-8">
                             <div class="timeline-path"></div>
-                            <h4 class="font-bold text-lg text-white">Entscheidung treffen</h4>
-                            <p class="text-gray-300 text-sm">Besprich dich mit deinen Eltern und deinem Berater, um den
-                                Weg in die USA verbindlich zu starten.</p>
+                            <h4 class="font-bold text-lg text-white">Make a Decision</h4>
+                            <p class="text-gray-300 text-sm">Discuss with your parents and consultant to bindingly start your path to the USA.</p>
                         </div>
                         <div class="timeline-item relative pb-8">
                             <div class="timeline-path"></div>
-                            <h4 class="font-bold text-lg text-white">Profil erstellen</h4>
-                            <p class="text-gray-300 text-sm">Gemeinsam erstellen wir dein professionelles Online-Profil
-                                inklusive Highlight-Video, um Coaches auf dich aufmerksam zu machen.</p>
+                            <h4 class="font-bold text-lg text-white">Create Profile</h4>
+                            <p class="text-gray-300 text-sm">Together we create your professional online profile including highlight video to get coaches' attention.</p>
                         </div>
                         <div class="timeline-item relative pb-8">
                             <div class="timeline-path"></div>
-                            <h4 class="font-bold text-lg text-white">Tests & Vorbereitung</h4>
-                            <p class="text-gray-300 text-sm">Wir managen mit dir die komplette Vorbereitung: von den
-                                Zulassungstests (SAT, TOEFL) bis zu den Visa-Unterlagen.</p>
+                            <h4 class="font-bold text-lg text-white">Tests & Preparation</h4>
+                            <p class="text-gray-300 text-sm">We manage the complete preparation with you: from admission tests (SAT, TOEFL) to visa documents.</p>
                         </div>
                         <div class="timeline-item relative">
-                            <h4 class="font-bold text-lg text-white">Kontakt mit Coaches & Zusage</h4>
-                            <p class="text-gray-300 text-sm">Wir bringen dich mit interessierten US-Coaches zusammen. Du
-                                führst Gespräche und entscheidest dich für dein bestes Angebot.</p>
+                            <h4 class="font-bold text-lg text-white">Coach Contact & Commitment</h4>
+                            <p class="text-gray-300 text-sm">We connect you with interested US coaches. You conduct interviews and decide on your best offer.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- TEILER 1 (Linie) -->
+            <!-- DIVIDER 1 -->
             <div class="border-t border-white/10 my-8 max-w-5xl mx-auto"></div>
 
-            <!-- SEKTION: Flexible Zahlungsmodelle (fest integriert) -->
+            <!-- SECTION: Packages -->
             <div id="honorar" class="mb-12">
-                <h2 class="section-title text-white">Unsere Pakete</h2>
-                <p class="text-center text-gray-300 mb-8 max-w-2xl mx-auto">Wähle das Zahlungsmodell, das am besten zu
-                    dir passt. Der Leistungsumfang ist bei beiden Optionen <strong>identisch</strong> – wir bringen dich
-                    ans Ziel.</p>
+                <h2 class="section-title text-white">Our Packages</h2>
+                <p class="text-center text-gray-300 mb-8 max-w-2xl mx-auto">Choose the payment model that fits you best. The scope of services is <strong>identical</strong> for both options – we get you to your goal.</p>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                    <!-- Option 1: Direktzahlung -->
+                    <!-- Option 1: Direct Payment -->
                     <div
                         class="bg-[#00254a] rounded-lg p-6 border border-white/20 flex flex-col relative overflow-hidden group hover:border-red-400/50 transition-all">
                         <div
                             class="absolute top-0 right-0 bg-[#D1192D] text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
-                            BELIEBT</div>
-                        <h4 class="text-xl font-bold text-white mb-2">Option 1: Direktzahlung</h4>
-                        <p class="text-gray-300 text-sm mb-4 flex-grow">Ideal für maximale Planungssicherheit. Du zahlst
-                            einmalig und wir starten sofort mit dem kompletten Prozess.</p>
+                            POPULAR</div>
+                        <h4 class="text-xl font-bold text-white mb-2">Option 1: Direct Payment</h4>
+                        <p class="text-gray-300 text-sm mb-4 flex-grow">Ideal for maximum planning security. You pay once and we start the complete process immediately.</p>
                         <div class="text-center mt-auto">
                             <p class="text-3xl font-black text-white mb-4">3.250 €</p>
                             <a href="https://athletesusa.org/de/payment/" target="_blank"
                                 class="block w-full bg-[#D1192D] text-white font-bold py-2 rounded-lg hover:bg-[#b91c2a] transition-colors">
-                                Option 1 wählen
+                                Select Option 1
                             </a>
                         </div>
                     </div>
 
-                    <!-- Option 2: Erfolgsbasiert -->
+                    <!-- Option 2: Success Based -->
                     <div
                         class="bg-[#00254a] rounded-lg p-6 border border-white/20 flex flex-col group hover:border-red-400/50 transition-all">
-                        <h4 class="text-xl font-bold text-white mb-2">Option 2: Erfolgsbasiert</h4>
-                        <p class="text-gray-300 text-sm mb-4 flex-grow">Geringes Risiko. Du zahlst den Großteil erst,
-                            wenn du einem College zusagst.</p>
+                        <h4 class="text-xl font-bold text-white mb-2">Option 2: Success Based</h4>
+                        <p class="text-gray-300 text-sm mb-4 flex-grow">Low risk. You pay the majority only when you commit to a college.</p>
                         <div class="text-center mt-auto">
                             <div class="flex justify-center items-baseline space-x-2 mb-1">
                                 <span class="text-xl font-bold text-gray-400">950 €</span>
                                 <span class="text-sm text-gray-500">Start</span>
                                 <span class="text-gray-400">+</span>
                                 <span class="text-3xl font-black text-white">3.250 €</span>
-                                <span class="text-sm text-gray-500">bei Zusage</span>
+                                <span class="text-sm text-gray-500">upon Commitment</span>
                             </div>
-                            <p class="text-xs text-gray-400 mb-4">* Keine Zusage = Keine Restzahlung</p>
+                            <p class="text-xs text-gray-400 mb-4">* No Commitment = No Final Payment</p>
                             <a href="https://athletesusa.org/de/payment/" target="_blank"
                                 class="block w-full bg-white/10 text-white font-bold py-2 rounded-lg hover:bg-white/20 transition-colors border border-white/30">
-                                Option 2 wählen
+                                Select Option 2
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- TEILER 2 (Linie) -->
+            <!-- DIVIDER 2 -->
             <div class="border-t border-white/10 my-8 max-w-5xl mx-auto"></div>
 
-            <!-- NEU: Gesamtkostenübersicht (3 Säulen) - Unter den Paketen -->
+            <!-- Overview of Total Costs -->
             <div id="gesamtkosten" class="mb-8">
-                <h2 class="section-title text-white">Gesamtkosten im Überblick</h2>
+                <h2 class="section-title text-white">Total Costs Overview</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-center">
 
-                    <!-- Säule 1: Agentur -->
+                    <!-- Pillar 1: Agency -->
                     <div class="bg-[#00254a] p-6 rounded-lg border border-white/20 flex flex-col h-full">
                         <div
                             class="flex items-center justify-center w-12 h-12 bg-white/20 rounded-full mx-auto mb-4 text-2xl">
                             🤝</div>
                         <h3 class="text-xl font-bold text-white mb-2">1. Athletes USA</h3>
-                        <p class="text-gray-400 text-sm mb-4">Einmalige Investition für Vermittlung & Betreuung</p>
+                        <p class="text-gray-400 text-sm mb-4">One-time investment for placement & support</p>
                         <div class="mt-auto">
                             <p class="text-2xl font-bold text-white">3.250 €</p>
-                            <p class="text-xs text-gray-500 mt-1">(ggf. aufgeteilt in Raten)</p>
+                            <p class="text-xs text-gray-500 mt-1">(can be paid in installments)</p>
                         </div>
                     </div>
 
-                    <!-- Säule 2: Prozess -->
+                    <!-- Pillar 2: Process -->
                     <div class="bg-[#00254a] p-6 rounded-lg border border-white/20 flex flex-col h-full relative group">
                         <div
                             class="flex items-center justify-center w-12 h-12 bg-white/20 rounded-full mx-auto mb-4 text-2xl">
                             📋</div>
-                        <h3 class="text-xl font-bold text-white mb-2">2. Prozesskosten</h3>
-                        <p class="text-gray-400 text-sm mb-4">Variable Kosten an Dritte (Ämter, Testzentren, etc.)</p>
+                        <h3 class="text-xl font-bold text-white mb-2">2. Process Costs</h3>
+                        <p class="text-gray-400 text-sm mb-4">Variable costs to third parties (authorities, test centers, etc.)</p>
 
                         <div class="text-left text-sm text-gray-300 mb-4 space-y-2 bg-[#001f3d] p-3 rounded-md">
                             <p><strong class="text-white">Standard:</strong><br>
-                                • Übersetzungen, Sprachtests<br>
-                                • Visum & Gebühren</p>
-                            <p class="border-t border-white/10 pt-2"><strong class="text-white">Optional /
-                                    Situationsabhängig:</strong><br>
-                                • SAT Test, Gutachten<br>
-                                • Impfungen, Pass</p>
+                                • Translations, Language Tests<br>
+                                • Visa & Fees</p>
+                            <p class="border-t border-white/10 pt-2"><strong class="text-white">Optional / Situational:</strong><br>
+                                • SAT Test, Evaluations<br>
+                                • Vaccinations, Passport</p>
                         </div>
 
                         <div class="mt-auto">
-                            <p class="text-2xl font-bold text-white">ca. 500 - 1.500 €</p>
-                            <p class="text-xs text-gray-500 mt-1">(Verteilt über den Prozess)</p>
+                            <p class="text-2xl font-bold text-white">approx. 500 - 1.500 €</p>
+                            <p class="text-xs text-gray-500 mt-1">(Distributed over the process)</p>
                         </div>
                     </div>
 
-                    <!-- Säule 3: USA (Budget) -->
+                    <!-- Pillar 3: USA (Budget) -->
                     <div class="bg-[#00254a] p-6 rounded-lg border-2 border-green-500/50 flex flex-col h-full relative">
                         <div
                             class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">
-                            DEIN ZIEL</div>
+                            YOUR GOAL</div>
                         <div
                             class="flex items-center justify-center w-12 h-12 bg-green-500/20 rounded-full mx-auto mb-4 text-2xl">
                             🇺🇸</div>
                         <h3 class="text-xl font-bold text-white mb-2">3. Budget USA</h3>
-                        <p class="text-gray-400 text-sm mb-4">Jährliche Kosten für Wohnen, Essen, Studium & Versicherung
+                        <p class="text-gray-400 text-sm mb-4">Annual costs for Housing, Food, Tuition & Insurance
                         </p>
                         <div class="mt-auto">
                             <p class="text-2xl font-bold text-green-400">{{ roadmap.fields.finanzenEigenanteilJaehrlich
                                 }}</p>
-                            <p class="text-xs text-gray-500 mt-1">(pro Jahr in den USA)</p>
+                            <p class="text-xs text-gray-500 mt-1">(per year in the USA)</p>
                         </div>
                     </div>
 
@@ -480,17 +461,17 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
 
         <!-- Section 5: Next Steps -->
         <section id="next-steps" class="mb-16 card">
-            <h2 class="section-title text-white">Deine Nächsten Schritte</h2>
+            <h2 class="section-title text-white">Your Next Steps</h2>
             <div class="flex flex-col md:flex-row md:items-start justify-between text-center max-w-5xl mx-auto">
                 <!-- Step 1 -->
                 <div class="flex flex-col items-center p-4">
                     <div
                         class="flex items-center justify-center w-16 h-16 bg-white rounded-full text-3xl font-black text-[#002D56]">
                         1</div>
-                    <h4 class="font-bold mt-4 text-lg text-white">Informieren</h4>
-                    <p class="text-sm text-gray-300">Lies alle Infos auf unserer <a
-                            href="https://athletesusa.org/de/university-placement/" target="_blank"
-                            class="text-white font-bold underline hover:text-red-400">Programm-Seite</a>.</p>
+                    <h4 class="font-bold mt-4 text-lg text-white">Inform</h4>
+                    <p class="text-sm text-gray-300">Read all info on our <a
+                            href="https://athletesusa.org/university-placement/" target="_blank"
+                            class="text-white font-bold underline hover:text-red-400">Program Page</a>.</p>
                 </div>
 
                 <!-- Connector -->
@@ -502,8 +483,8 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                     <div
                         class="flex items-center justify-center w-16 h-16 bg-white rounded-full text-3xl font-black text-[#002D56]">
                         2</div>
-                    <h4 class="font-bold mt-4 text-lg text-white">Anmelden</h4>
-                    <p class="text-sm text-gray-300">Wähle eine Mitgliedschaft und buche deine Anmeldung online.</p>
+                    <h4 class="font-bold mt-4 text-lg text-white">Sign Up</h4>
+                    <p class="text-sm text-gray-300">Choose a membership and book your registration online.</p>
                 </div>
 
                 <!-- Connector -->
@@ -515,8 +496,8 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                     <div
                         class="flex items-center justify-center w-16 h-16 bg-white rounded-full text-3xl font-black text-[#002D56]">
                         3</div>
-                    <h4 class="font-bold mt-4 text-lg text-white">Abstimmen</h4>
-                    <p class="text-sm text-gray-300">Informiere deinen Berater über deine Entscheidung.</p>
+                    <h4 class="font-bold mt-4 text-lg text-white">Coordinate</h4>
+                    <p class="text-sm text-gray-300">Inform your consultant about your decision.</p>
                 </div>
 
                 <!-- Connector -->
@@ -528,22 +509,22 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                     <div
                         class="flex items-center justify-center w-16 h-16 bg-white rounded-full text-3xl font-black text-[#002D56]">
                         4</div>
-                    <h4 class="font-bold mt-4 text-lg text-white">Durchstarten</h4>
-                    <p class="text-sm text-gray-300">Der offizielle Recruiting-Prozess beginnt. Wir legen los!</p>
+                    <h4 class="font-bold mt-4 text-lg text-white">Take Off</h4>
+                    <p class="text-sm text-gray-300">The official recruiting process begins. Let's go!</p>
                 </div>
             </div>
         </section>
 
-        <!-- NEUE SEKTION: Wusstest du schon? -->
+        <!-- Section: Did you know? -->
         <section id="knowledge" class="mb-16 card">
-            <h2 class="section-title text-white">Wusstest du schon?</h2>
+            <h2 class="section-title text-white">Did you know?</h2>
             <div class="space-y-6">
 
-                <!-- Akkordeon 1: Über Athletes USA -->
+                <!-- Accordion 1: About Athletes USA -->
                 <details
                     class="group bg-[#00254a] rounded-lg border border-white/20 overflow-hidden transition-all duration-300 open:bg-[#002D56] open:ring-1 open:ring-white/30">
                     <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-                        <h3 class="text-xl font-bold text-white">Wer ist Athletes USA?</h3>
+                        <h3 class="text-xl font-bold text-white">Who is Athletes USA?</h3>
                         <span class="transition transform group-open:rotate-180 text-white">
                             <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
@@ -554,20 +535,19 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                     </summary>
                     <div class="text-gray-300 p-6 pt-6 leading-relaxed border-t border-white/10 mt-2">
                         <p class="mb-6 font-medium text-lg leading-relaxed text-white">
-                            Athletes USA ist nicht nur eine Agentur – wir sind dein Tor zur
-                            Weltklasse.
-                            Seit 2008 dominieren wir den Markt für Sportstipendien.
+                            Athletes USA is not just an agency – we are your gateway to world class.
+                            Since 2008 we have dominated the market for sports scholarships.
                         </p>
 
                         <!-- Stats Grid -->
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                             <div class="bg-white/10 rounded-lg p-4 text-center border border-white/5 backdrop-blur-sm">
                                 <div class="text-3xl font-black text-white mb-1">4.000+</div>
-                                <div class="text-xs uppercase tracking-widest text-gray-400">Vermittelte Athleten</div>
+                                <div class="text-xs uppercase tracking-widest text-gray-400">Athletes Placed</div>
                             </div>
                             <div class="bg-white/10 rounded-lg p-4 text-center border border-white/5 backdrop-blur-sm">
                                 <div class="text-3xl font-black text-white mb-1">$100M+</div>
-                                <div class="text-xs uppercase tracking-widest text-gray-400">Stipendien-Volumen</div>
+                                <div class="text-xs uppercase tracking-widest text-gray-400">Scholarship Volume</div>
                             </div>
                             <div class="bg-white/10 rounded-lg p-4 text-center border border-white/5 backdrop-blur-sm">
                                 <div class="text-3xl font-black text-white mb-1">20.000+</div>
@@ -576,14 +556,12 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                         </div>
 
                         <p class="text-sm">
-                            Unser Team besteht aus ehemaligen Division-1-Athleten und Scouts, die genau wissen,
-                            was Coaches suchen. Wir bringen dich nicht nur irgendwo unter – wir bringen dich
-                            an die <strong>bestmögliche Uni</strong> für deine Karriere.
+                            Our team consists of former Division 1 athletes and scouts who know exactly what coaches are looking for. We don't just place you anywhere – we get you to the <strong>best possible university</strong> for your career.
                         </p>
                     </div>
                 </details>
 
-                <!-- Akkordeon 2: Bekannte Spieler / Hall of Fame -->
+                <!-- Accordion 2: Hall of Fame -->
                 <details
                     class="group bg-[#00254a] rounded-lg border border-white/20 overflow-hidden transition-all duration-300 open:bg-[#002D56] open:ring-1 open:ring-white/30">
                     <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
@@ -598,8 +576,7 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                     </summary>
                     <div class="p-6 pt-6 border-t border-white/10 mt-2">
                         <p class="text-gray-300 mb-6">
-                            Von der Uni in die Weltspitze. Diese Athleten haben den Schritt gewagt und ihre Karriere in
-                            den USA gestartet.
+                            From university to the world stage. These athletes took the leap and started their careers in the USA.
                         </p>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -607,7 +584,7 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                             <!-- Player Card 1 (Morris Duggan) -->
                             <div
                                 class="group relative h-96 rounded-xl overflow-hidden cursor-pointer shadow-2xl border border-white/10 transform transition-all duration-500 hover:scale-[1.02]">
-                                <!-- Background Image (Placeholder) -->
+                                <!-- Background Image -->
                                 <img src="/assets/morris duggan.jpg"
                                     alt="Morris Duggan"
                                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 opacity-70 group-hover:opacity-50">
@@ -631,11 +608,9 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                                                 <p class="text-red-400 font-bold uppercase tracking-wider text-sm mb-1">
                                                     Iowa Lakes CC (NJCAA D2)<br>
                                                     Marshall University (NCAA D1)</p>
-                                                <p class="text-white text-lg font-bold mb-2">NCAA Champion &
-                                                    MLS Spieler</p>
+                                                <p class="text-white text-lg font-bold mb-2">NCAA Champion & MLS Player</p>
                                                 <p class="text-gray-300 text-sm leading-snug">
-                                                    Startete seine Reise am College und spielt heute gegen
-                                                    Lionel Messi in der MLS.
+                                                    Started his journey at college and now plays against Lionel Messi in the MLS.
                                                 </p>
                                             </div>
                                         </div>
@@ -643,7 +618,7 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                                 </div>
                             </div>
 
-                            <!-- Player Card 2 (Placeholder/Example) -->
+                            <!-- Player Card 2 -->
                             <div
                                 class="group relative h-96 rounded-xl overflow-hidden cursor-pointer shadow-2xl border border-white/10 transform transition-all duration-500 hover:scale-[1.02]">
                                 <!-- Background Image -->
@@ -673,8 +648,7 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                                                 <p class="text-white text-lg font-bold mb-2">Graduate Student in New York
                                                 </p>
                                                 <p class="text-gray-300 text-sm leading-snug">
-                                                    Hat sich ihren Traum von der University in New York City
-                                                    verwirklicht.
+                                                    Realized her dream of university in New York City.
                                                 </p>
                                             </div>
                                         </div>
@@ -682,7 +656,7 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                                 </div>
                             </div>
 
-                            <!-- Player Card 3 (New Placeholder) -->
+                             <!-- Player Card 3 -->
                             <div
                                 class="group relative h-96 rounded-xl overflow-hidden cursor-pointer shadow-2xl border border-white/10 transform transition-all duration-500 hover:scale-[1.02]">
                                 <!-- Background Image -->
@@ -711,11 +685,9 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                                                     Montgomery College (NJCAA D1)<br>
                                                     Tyler Junior College (NJCAA D1) <br>
                                                     Marshall University (NCAA D1)</p>
-                                                <p class="text-white text-lg font-bold mb-2">Über ein Junior College zur
-                                                    Top Universität</p>
+                                                <p class="text-white text-lg font-bold mb-2">From Junior College to Top University</p>
                                                 <p class="text-gray-300 text-sm leading-snug">
-                                                    Carlo wurde 2024 als All American ausgezeichnet und transferierte zu
-                                                    einer der besten Fußball Unis im Land.
+                                                    Carlo was named All American in 2024 and transferred to one of the best soccer universities in the country.
                                                 </p>
                                             </div>
                                         </div>
@@ -723,7 +695,7 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                                 </div>
                             </div>
 
-                            <!-- Player Card 4 (New Placeholder) -->
+                            <!-- Player Card 4 -->
                             <div
                                 class="group relative h-96 rounded-xl overflow-hidden cursor-pointer shadow-2xl border border-white/10 transform transition-all duration-500 hover:scale-[1.02]">
                                 <!-- Background Image -->
@@ -749,13 +721,11 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                                             <div class="pt-4 border-t-4 border-yellow-400 mt-2">
                                                 <p
                                                     class="text-yellow-400 font-bold uppercase tracking-wider text-sm mb-1">
-                                                    Long sland University (NCAA D1) <br> University of Akron (NCAA D1)
+                                                    Long Island University (NCAA D1) <br> University of Akron (NCAA D1)
                                                 </p>
-                                                <p class="text-white text-lg font-bold mb-2">Top-Torschütze der NCAA D1
-                                                    & MLS-Draft Spieler</p>
+                                                <p class="text-white text-lg font-bold mb-2">Top Scorer NCAA D1 & MLS Draft Player</p>
                                                 <p class="text-gray-300 text-sm leading-snug">
-                                                    Emil erzielte in der College Season 2024, 23 Tore in 21 Spielen und
-                                                    wurde am Ende der Saison von St.Louis City in die MLS gedraftet.
+                                                    Emil scored 23 goals in 21 games in the 2024 college season and was drafted into the MLS by St. Louis City at the end of the season.
                                                 </p>
                                             </div>
                                         </div>
@@ -765,11 +735,11 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                         </div>
                 </details>
 
-                <!-- Akkordeon 3: Partner Unis -->
+                <!-- Accordion 3: Partner Unis -->
                 <details
                     class="group bg-[#00254a] rounded-lg border border-white/20 overflow-hidden transition-all duration-300 open:bg-[#002D56] open:ring-1 open:ring-white/30">
                     <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-                        <h3 class="text-xl font-bold text-white">Unser Uni-Netzwerk</h3>
+                        <h3 class="text-xl font-bold text-white">Our University Network</h3>
                         <span class="transition transform group-open:rotate-180 text-white">
                             <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor"
                                 stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
@@ -780,8 +750,7 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
                     </summary>
                     <div class="p-6 pt-6 border-t border-white/10 mt-2">
                         <p class="text-gray-300 mb-6">
-                            Unser Netzwerk umfasst über 3.000 Universitäten in den gesamten USA. Hier sind
-                            einige unserer Partner-Unis.
+                            Our network includes over 3,000 universities across the USA. Here are some of our partner universities.
                         </p>
 
                         <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -875,12 +844,11 @@ permalink: "roadmaps/{{ roadmap.sys.id }}/index.html"
         <!-- Footer -->
         <footer class="mt-16 card bg-[#00254a] border-white/20">
             <div class="flex flex-col md:flex-row items-center text-center md:text-left">
-                <img src="{{ roadmap.fields.beraterBild.fields.file.url }}" alt="Berater Foto"
+                <img src="{{ roadmap.fields.beraterBild.fields.file.url }}" alt="Consultant Photo"
                     class="w-24 h-24 rounded-full mb-6 md:mb-0 md:mr-8 object-cover border-4 border-white shadow-md">
                 <div>
-                    <h3 class="text-2xl font-bold text-white">Dein Persönlicher Ansprechpartner</h3>
-                    <p class="text-gray-300 mt-2 mb-4">Ich bin bei allen Fragen für dich da und begleite dich auf deinem
-                        Weg zum Stipendium.</p>
+                    <h3 class="text-2xl font-bold text-white">Your Personal Consultant</h3>
+                    <p class="text-gray-300 mt-2 mb-4">I am here for all your questions and will accompany you on your path to a scholarship.</p>
                     <p class="font-bold text-lg text-white">{{ roadmap.fields.beraterName }}</p>
                     <p class="text-gray-400">University Search Team, Athletes USA</p>
                     <p class="mt-3">
